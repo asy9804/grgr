@@ -37,10 +37,16 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 	}
 
 	@Override
-	public List<QnaBoard> selectQnaBoardList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public int selectQnaBoardCount() {
+		return sqlSession.getMapper(QnaBoardMapper.class).selectQnaBoardCount();
 	}
+	
+	@Override
+	public List<QnaBoard> selectQnaBoardList(Map<String, Object> map) {
+		return sqlSession.getMapper(QnaBoardMapper.class).selectQnaBoardList(map);
+	}
+
+	
 	
 	
 }

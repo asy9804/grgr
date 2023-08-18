@@ -5,19 +5,19 @@
 		<selectKey resultType="int" keyProperty="qna_bno" order="BEFORE">
 			select into qna_bno_seq.nextval form dual 
 		</selectKey>
-		insert into qnaboard values(#{qna_bno}, #{qna_uno}, #{qna_keyword}, #{qna_title}
+		insert into qna_board values(#{qna_bno}, #{qna_uno}, #{qna_keyword}, #{qna_title}
 			, #{qna_content}, #{qna_blindstate}, sysdate, sysdate, #{qna_update_uno})
 	</insert>	
 
 	<update id="updateQnaBoard">
-		update qnaboard set qna_uno=#{qna_uno}, qna_keyword=#{qna_keyword}
+		update qna_board set qna_uno=#{qna_uno}, qna_keyword=#{qna_keyword}
 			, qna_title=#{qna_title}, qna_content=#{qna_content}
 			, qna_blindstate=#{qna_blindstate}, qna_modifydate=#{qna_modifydate}
 			, qna_update_uno=#{qna_update_uno} where uno=#{uno}
 	</update>
 	
 	<delete id="deleteQnaBoard">
-		delete from qnaboard where qna_bno=#{qna_bno}
+		delete from qna_board where qna_bno=#{qna_bno}
 	</delete>
 	
 	<select id="selectQnaBoard" resultType="QnaBoard">
@@ -26,13 +26,13 @@
 	</select>
 	
 	<select id="selectQnaBoardCount" resultType="int">
-		select count(*) from qnaboard
+		select count(*) from qna_board
 	</select>
 	
 	<select id="selectQnaBoardList" resultType="QnaBoard">
 		select * from (select rownum rn, board.* from(select qna_bno, qna_uno
 		, qna_keyword, qna_title, qna_content, qna_blindstate, qna_regdate
-		, qna_modifydate, qna_update_uno from qnaboard order by qna_bno desc) board) 
+		, qna_modifydate, qna_update_uno from qna_board order by qna_bno desc) board) 
 		 where rn between #{startRow} and #{endRow}
 	</select>
 </mapper>

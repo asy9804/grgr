@@ -10,5 +10,6 @@ public interface QnaBoardDAO {
 	int updateQnaBoard(QnaBoard qnaBoard);
 	int deleteQnaBoard(int qna_bno);
 	QnaBoard selectQnaBoard(int qna_bno);
+	int selectQnaBoardCount();
 	List<QnaBoard> selectQnaBoardList(Map<String, Object> map);
 }
