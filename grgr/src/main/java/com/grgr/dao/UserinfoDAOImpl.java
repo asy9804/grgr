@@ -42,8 +42,8 @@ public class UserinfoDAOImpl implements UserinfoDAO {
 	}
 
 	@Override
-	public List<Userinfo> selectUserinfoList(Map<String, Object> map) {
-		return sqlSession.getMapper(UserinfoMapper.class).selectUserinfoList(map);
+	public List<Userinfo> selectUserinfoList() {
+		return sqlSession.getMapper(UserinfoMapper.class).selectUserinfoList();
 	}
 	
 	
