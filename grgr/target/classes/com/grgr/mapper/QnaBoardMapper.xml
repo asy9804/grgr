@@ -29,9 +29,9 @@
 	<!-- 게시글 검색 -->
 	<select id="selectQnaBoard" resultType="QnaBoard">
 		select qna_blindstate, qna_title, qna_content from qna_board 
-		where qna_blindatate like qna_blindstate=1 
-			and qna_title like '%||'#{qna_title}||'%' 
-				or qna_content like '%'||#{qna_content}||'%' 
+		where qna_blindstate=1 
+			and (qna_title like '%'||#{qna_title}||'%' 
+				or qna_content like '%'||#{qna_content}||'%') 
 	</select>
 	
 	<!-- 게시글 개수 검색? -->
@@ -47,11 +47,11 @@
 			from(select qna_title, qna_content, qna_blindstate, qna_regdate	
 				, qna_modifydate, qna_update_uno 
 				from qna_board 
-				where qna_blindatate like qna_blindstate=1 
-					and qna_title like '%||'#{qna_title}||'%'
-						or qna_content like '%'||#{qna_content}||'%' 
+				where qna_blindstate=1 
+					and (qna_title like '%'||#{qna_title}||'%'
+						or qna_content like '%'||#{qna_content}||'%') 
 				order by qna_bno) 
-					board) 
+			board)
 		 where rn between #{startRow} and #{endRow}
 	</select>
 </mapper>

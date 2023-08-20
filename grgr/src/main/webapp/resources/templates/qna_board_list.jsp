@@ -1,12 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <!-- Meta -->
     <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content="Soft UI - Neumorphism Style UI Kit" />
     <meta name="author" content="kingstudio.ro" />
@@ -14,6 +11,7 @@
     <link rel="icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" />
     <!-- Site Title -->
     <title>Soft UI - Neumorphism Style UI Kit</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Bootstrap 4 core CSS -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Custom Styles -->
@@ -45,7 +43,9 @@
   </style>
   <body>
     <div id="preloader">
-      <div class="preloader"><span></span> <span></span></div>
+      <div class="preloader"><span></span>
+      <span></span>
+      </div>
     </div>
 
     <div id="top"></div>
@@ -76,10 +76,10 @@
             <span class="sr-only">Toggle navigation</span>
           </button>
           <!-- / navbar-toggler -->
-
           <div class="collapse navbar-collapse" id="navbar-toggle">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
+			<!-- 
                 <a
                   class="nav-link dropdown-toggle"
                   href="#x"
@@ -102,6 +102,7 @@
                   <a class="dropdown-item" href="${pageContext.request.contextPath}/components.html#extras">
                   <i class="fas fa-heart mr-5"></i> <span>Extras</span></a>
                 </div>
+                 -->
                 <!-- / dropdown-menu -->
               </li>
               <!-- / dropdown -->
@@ -227,7 +228,7 @@
                   target="_blank"
                 >
                   <i class="fas fa-user fs-12 mr-5"></i>
-                  <span style="font-size: 20px">ë§ì´íì´ì§</span>
+                  <span style="font-size: 20px">마이페이지</span>
                 </a>
               </li>
             </ul>
@@ -243,34 +244,27 @@
       <!-- / container -->
     </header>
 
-    <!-- í° ì»¨íì´ë  -->
+    <!-- 큰 컨테이너 -->
     <section class="big">
       <div class="container">
         <h2 class="hidden">Info Board List</h2>
-        <!-- í¤ìë -->
+        <!-- 키워드 -->
         <ul class="portfolio-filter list-inline text-center mb-30">
-          <li id="portfolio-filter-list"><a href="#">ì§ì­ : ê°ë¨êµ¬ </a></li>
+        <!-- <li id="portfolio-filter-list"><a href="#">지역 : </a></li> -->
           <li id="portfolio-filter-list">
-            <a href="#" data-group="all" class="active ml-2">ì ì²´</a>
+            <a href="#" data-group="all" class="active ml-2">전체</a>
           </li>
           <li id="portfolio-filter-list">
-            <a href="#" data-group="food">ì¼ë°íì</a>
+            <a href="#" data-group="ilban">일반회원</a>
           </li>
           <li id="portfolio-filter-list">
-            <a href="#" data-group="market">ìê¶íì</a>
-          </li>
-          <li id="portfolio-filter-list">
-            <a href="#" data-group="living">ìíì ë³´</a>
-          </li>
-          <li id="portfolio-filter-list">
-            <a href="#" data-group="event">ì´ë²¤í¸</a>
-          </li>
+            <a href="#" data-group="sangkwon">상권회원</a>
         </ul>
 
         <div style="float: right; display: block">
           <a href="#x" class="btn btn-primary-gradient m-y-10 mr-10">
           <span class="fas fa-edit mr-10"></span>
-            <span style="font-size: 20px">ê¸ì°ê¸°</span></a>
+            <span style="font-size: 20px">글쓰기</span></a>
         </div>
 
         <div>
@@ -279,8 +273,8 @@
             id="grid"
             style="clear: both">
             <!--====================================================================================================  -->
-            <!-- project -->
-            <li class="col-md-12 col-lg-0 project" data-groups='["market"]'>
+            <!-- 일반회원 -->
+            <li class="col-md-12 col-lg-0 project" data-groups='["ilban"]'>
               <div class="promo-box">
                 <div class="cta p-0">
                   <div class="row v-center">
@@ -305,7 +299,45 @@
                         style="text-align: right">
                         <i class="far fa-calendar-alt mr-5">Jul 02,</i>
                         2020<span class="m-x-10 text-muted">|</span>
-                        <i class="fas fa-tag mr-10">ê¸°í íê¸°</i>
+                        <i class="fas fa-tag mr-10">일반</i>
+                      </p>
+                    </div>
+                    <!-- / column -->
+                  </div>
+                  <!-- / row -->
+                </div>
+                <!-- / cta -->
+              </div>
+              <!-- / promo-box -->
+            </li>
+            <!--====================================================================================================  -->
+            <!-- 상권회원 -->
+            <li class="col-md-12 col-lg-0 project" data-groups='["sangkwon"]'>
+              <div class="promo-box">
+                <div class="cta p-0">
+                  <div class="row v-center">
+                    <div class="col-lg-2 tablet-lg-top-30 tablet-lg-center">
+                      <img
+                        src="${pageContext.request.contextPath}/assets/images/placeholder-square.jpg"
+                        alt="default-img"
+                        class="rounded"/>
+                    </div>
+                    <!-- / column -->
+                    <div class="col-lg-10 text-left tablet-lg-center">
+                      <p class="mb-20">What you can create?</p>
+                      <p class="lead mb-20">
+                        In porta porta urna, venenatis volutpat odio dictum sed.
+                        Donec posuere ac ligula vel vestibulum. Sed tincidunt mi
+                        nunc, vitae mollis turpis gravida et. Praesent vitae
+                        turpis pharetra, egestas justo ut, convallis quam.In
+                        porta porta urna,
+                      </p>
+                      <p
+                        class="fs-16 post-meta-small mt-15 mb-0"
+                        style="text-align: right">
+                        <i class="far fa-calendar-alt mr-5">Jul 02,</i>
+                        2020<span class="m-x-10 text-muted">|</span>
+                        <i class="fas fa-tag mr-10">상권</i>
                       </p>
                     </div>
                     <!-- / column -->
@@ -321,6 +353,25 @@
         </div>
       </div>
       <!-- / container -->
+      
+      <script type="text/javascript">
+      var page=1;
+      
+      boardListDispaly(page);
+      
+      function boardListDisplay(pageNum) {
+		pgae=pageNum;
+		$.ajax({
+			type: "get",
+			url: "<c:url value="/qna/board_list"/>",
+			date: {"pageNum":pageNum},
+			datatype: "json",
+			success: function(result) {
+				alert(result);
+			}
+		});
+	}
+      </script>
     </section>
     <nav aria-label="pagination-center">
       <ul class="pagination justify-content-center">
