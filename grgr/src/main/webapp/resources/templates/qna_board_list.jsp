@@ -1,4 +1,12 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% 
+	Date date=new Date();
+	SimpleDateFormat simpleDate=new SimpleDateFormat("yyyy-MM-dd");
+    String displayDate=simpleDate.format(date);
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -245,9 +253,14 @@
     </header>
 
     <!-- 큰 컨테이너 -->
+    
+    <%-- 게시글 목록을 출력하는 태그 --%>
+	<div id="qnaBoardListDiv"></div>
+
+	
     <section class="big">
       <div class="container">
-        <h2 class="hidden">Info Board List</h2>
+        <h2 class="hidden">Qna Board List</h2>
         <!-- 키워드 -->
         <ul class="portfolio-filter list-inline text-center mb-30">
         <!-- <li id="portfolio-filter-list"><a href="#">지역 : </a></li> -->
@@ -255,18 +268,53 @@
             <a href="#" data-group="all" class="active ml-2">전체</a>
           </li>
           <li id="portfolio-filter-list">
-            <a href="#" data-group="ilban">일반회원</a>
+            <a href="#" data-group="ilban">일반회원</a>
           </li>
           <li id="portfolio-filter-list">
-            <a href="#" data-group="sangkwon">상권회원</a>
+            <a href="#" data-group="sangkwon">상권회원</a>
         </ul>
 
         <div style="float: right; display: block">
-          <a href="#x" class="btn btn-primary-gradient m-y-10 mr-10">
-          <span class="fas fa-edit mr-10"></span>
-            <span style="font-size: 20px">글쓰기</span></a>
+			<button class="btn btn-primary-gradient m-y-10 mr-10" onclick="location.href='write.jsp';">
+		        <span class="fas fa-edit mr-10"></span>
+		        <span style="font-size: 20px">글쓰기</span>
+			</button>
         </div>
-
+        
+        <!-- 
+        <script type="text/javascript">
+        var page=1;
+        
+        qnaBoardListDisplay(page);
+        
+        function qnaBoardListDisplay(pageNum) {
+			page=pageNum;
+			$.ajax({
+				type: "get",
+				url: "<c:url value='/qna/board_list'/>",
+				data: {"pageNum": pageNum},
+				dataType: "json",
+				success: function(result) {
+					if(result.qnaBoardList.lenth == 0) {
+						$("#qnaBoardListDiv").html("<p>검색된 게시글이 없습니다.</p>");
+						$("#pageNumDiv").html("");
+						return;
+					}
+					
+					var html="<table class='table table-bordered'>";
+					html+="</table>";
+					
+					$("#qnaBoardListDiv").html(html);
+				},
+				error: function(xhr) {
+					alret("에러코드(게시글 검색) = "+xhr.status);
+				}
+			});
+		
+		}
+        </script>
+		 -->
+ 
         <div>
           <ul
             class="row portfolio project-grid lightbox list-unstyled mb-0"
@@ -279,26 +327,25 @@
                 <div class="cta p-0">
                   <div class="row v-center">
                     <div class="col-lg-2 tablet-lg-top-30 tablet-lg-center">
+                      <!-- 
                       <img
                         src="${pageContext.request.contextPath}/assets/images/placeholder-square.jpg"
                         alt="default-img"
-                        class="rounded"/>
+                        class="rounded"/> -->
                     </div>
                     <!-- / column -->
                     <div class="col-lg-10 text-left tablet-lg-center">
-                      <p class="mb-20">What you can create?</p>
-                      <p class="lead mb-20">
-                        In porta porta urna, venenatis volutpat odio dictum sed.
-                        Donec posuere ac ligula vel vestibulum. Sed tincidunt mi
-                        nunc, vitae mollis turpis gravida et. Praesent vitae
-                        turpis pharetra, egestas justo ut, convallis quam.In
-                        porta porta urna,
+                      <p class="mb-15">일반회원 글제목</p>
+                      <p class="lead mb-15">
+                        일반회원 내용
                       </p>
                       <p
                         class="fs-16 post-meta-small mt-15 mb-0"
                         style="text-align: right">
-                        <i class="far fa-calendar-alt mr-5">Jul 02,</i>
-                        2020<span class="m-x-10 text-muted">|</span>
+                        <i class="far fa-calendar-alt mr-5">
+                        <%=displayDate %>
+                       	</i>
+                        <span class="m-x-10 text-muted">|</span>
                         <i class="fas fa-tag mr-10">일반</i>
                       </p>
                     </div>
@@ -317,26 +364,26 @@
                 <div class="cta p-0">
                   <div class="row v-center">
                     <div class="col-lg-2 tablet-lg-top-30 tablet-lg-center">
+                      <!-- 
                       <img
                         src="${pageContext.request.contextPath}/assets/images/placeholder-square.jpg"
                         alt="default-img"
-                        class="rounded"/>
+                        class="rounded"/> -->
                     </div>
                     <!-- / column -->
                     <div class="col-lg-10 text-left tablet-lg-center">
-                      <p class="mb-20">What you can create?</p>
-                      <p class="lead mb-20">
-                        In porta porta urna, venenatis volutpat odio dictum sed.
-                        Donec posuere ac ligula vel vestibulum. Sed tincidunt mi
-                        nunc, vitae mollis turpis gravida et. Praesent vitae
-                        turpis pharetra, egestas justo ut, convallis quam.In
-                        porta porta urna,
-                      </p>
+						<p class="mb-10">상권회원 글제목</p>
+						<p class="lead mb-10">
+                      		상권회원 내용
+						</p>
+						
                       <p
                         class="fs-16 post-meta-small mt-15 mb-0"
                         style="text-align: right">
-                        <i class="far fa-calendar-alt mr-5">Jul 02,</i>
-                        2020<span class="m-x-10 text-muted">|</span>
+                        <i class="far fa-calendar-alt mr-5">
+                        <%=displayDate %>
+                       	</i>
+                        <span class="m-x-10 text-muted">|</span>
                         <i class="fas fa-tag mr-10">상권</i>
                       </p>
                     </div>
@@ -352,33 +399,52 @@
           </ul>
         </div>
       </div>
-      <!-- / container -->
-      
-      <script type="text/javascript">
-      var page=1;
-      
-      boardListDispaly(page);
-      
-      function boardListDisplay(pageNum) {
-		pgae=pageNum;
-		$.ajax({
-			type: "get",
-			url: "<c:url value="/qna/board_list"/>",
-			date: {"pageNum":pageNum},
-			datatype: "json",
-			success: function(result) {
-				alert(result);
-			}
-		});
-	}
-      </script>
-    </section>
-    <nav aria-label="pagination-center">
+	</section>
+	<!-- / container -->
+	
+	<!-- 페이지 처리 -->
+		
+	<%-- 페이지 번호를 출력하는 태그 --%>
+	<div id="pageNumDiv"></div>
+	
+	<nav aria-label="pagination-center">
+	   <ul class="pagination justify-content-center">
+	       <li class="page-item disabled">
+	           <a class="page-link" href="#">
+	               <i class="fas fa-arrow-left mb-5"></i>
+	           </a>
+	       </li>
+	       
+	       
+	       <c:forEach var="page" begin="${pager.startPage}" end="${pager.endPage}">
+	           <c:choose>
+	               <c:when test="${page == pager.pageNum}">
+	                   <li class="page-item active">
+	                       <a class="page-link" href="javascript:void(0);" onclick="loadPage(${page})">${page}</a>
+	                   </li>
+	               </c:when>
+	               <c:otherwise>
+	                   <li class="page-item">
+	                       <a class="page-link" href="javascript:void(0);" onclick="loadPage(${page})">${page}</a>
+	                   </li>
+	               </c:otherwise>
+	           </c:choose>
+	       </c:forEach>
+	       
+	       <li class="page-item">
+	           <a class="page-link" href="javascript:void(0);" onclick="loadPage(${pager.nextPage})">
+	                <i class="fas fa-arrow-right mb-5"></i>
+	            </a>
+	        </li>
+	    </ul>
+	</nav>
+	<!-- 
+	 <nav aria-label="pagination-center">
       <ul class="pagination justify-content-center">
         <li class="page-item disabled">
-          <a class="page-link" href="#x">
-          <i class="fas fa-arrow-left mb-5"></i>
-          </a>
+          <a class="page-link" href="#x"
+            ><i class="fas fa-arrow-left mb-5"></i
+          ></a>
         </li>
         <li class="page-item"><a class="page-link" href="#x">1</a></li>
         <li class="page-item active"><a class="page-link" href="#x">2</a></li>
@@ -390,8 +456,9 @@
         </li>
       </ul>
     </nav>
+     -->
     <!-- / pagination-center -->
-
+    
     <a
       href="#top"
       class="scroll-to-top is-visible smooth-scroll"
@@ -399,7 +466,7 @@
       <i class="fas fa-chevron-up"></i>
       </a>
 
-    <!-- footer ìì­ -->
+    <!-- footer ­ -->
     <footer>
       <div class="container">
         <div class="row v-center mobile-center">

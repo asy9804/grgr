@@ -10,4 +10,5 @@ public interface QnaBoardService {
 	void removeQnaBoard(int qna_bno);
 	QnaBoard getQnaBoard(int qna_bno);
 	Map<String, Object> getQnaBoardList(int pageNum);
+	
 }
