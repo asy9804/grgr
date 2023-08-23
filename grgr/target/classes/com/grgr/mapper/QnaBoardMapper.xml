@@ -8,7 +8,7 @@
 			from dual 
 		</selectKey>
 		insert into qna_board values(#{qna_bno}, #{qna_uno}, #{qna_keyword}, #{qna_title}
-			, #{qna_content}, #{qna_blindstate}, sysdate, sysdate, #{qna_update_uno})
+			, #{qna_content}, #{qna_blindstate}, SYSDATE, SYSDATE, #{qna_update_uno})
 	</insert>	
 	
 	<!-- 게시글 수정 -->
@@ -16,7 +16,7 @@
 		update qna_board set qna_uno=#{qna_uno}, qna_keyword=#{qna_keyword}
 			, qna_title=#{qna_title}, qna_content=#{qna_content}
 				, qna_blindstate=#{qna_blindstate}, qna_update_uno=#{qna_update_uno}
-		where uno=#{uno}
+		where UNO=#{UNO}
 	</update>
 	
 	<!-- 게시글 삭제 -->
@@ -43,7 +43,7 @@
 	<!-- 게시글 목록 검색 -->
 	<select id="selectQnaBoardList" resultType="QnaBoard">
 		select * 
-		from (select rownum rn, board.* 
+		from (select ROWNUM rn, board.* 
 			from(select qna_title, qna_content, qna_blindstate, qna_regdate	
 				, qna_modifydate, qna_update_uno 
 				from qna_board 
