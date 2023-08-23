@@ -26,7 +26,8 @@
 			from dual 
 		</selectKey>
 		insert into qna_board values(#{qnaBno}, #{uno}, #{qnaKeyword}, #{qnaTitle}
-			, #{qnaContent}, #{qnaBlindstate}, SYSDATE, SYSDATE, #{qnaUpdateUno})
+			, #{qnaContent}, #{qna_view_cnt}, #{qnaBlindstate}, SYSDATE
+			, SYSDATE, #{qnaUpdateUno})
 	</insert>	
 	
 	<!-- 게시글 수정 -->
@@ -64,8 +65,9 @@
 	<!-- n번 게시글 -->
 	<select id="selectQnaBoard" resultType="QnaBoard">
 		select qna_bno, uno,
-		qna_keyword, qna_title, qna_content, qna_blindstate, qna_regdate, qna_update,
-		qna_update_uno from qna_board
+		qna_keyword, qna_title, qna_content, qna_view_cnt, qna_blindstate, qna_regdate
+			, qna_update, qna_update_uno 
+		from qna_board
 		where qna_bno=#{qnaBno}
 	</select>
 	
@@ -92,8 +94,8 @@
 	<select id="selectQnaBoardList" resultType="QnaBoard">
 		select * 
 		from (select ROWNUM rn, board.* 
-			from(select qna_bno, uno, qna_keyword, qna_title, qna_content, qna_blindstate, qna_regdate	
-				, qna_modifydate, qna_update_uno 
+			from(select qna_bno, uno, qna_keyword, qna_title, qna_content, qna_view_cnt 	
+				, qna_blindstate, qna_regdate, qna_modifydate, qna_update_uno 
 				from qna_board 
 				where qna_blindstate=1 
 					and (qna_title like '%'||#{qnaTitle}||'%'
@@ -102,4 +104,10 @@
 			board)
 		 where rn between #{startRow} and #{endRow}
 	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="increaseQnaViewCnt">
+		update qna_board set qna_view_cnt = qna_view_cnt +1
+		where qna_bno = #{qnaBno}
+	</update>
 </mapper>
