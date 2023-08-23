@@ -9,6 +9,8 @@ public interface QnaBoardService {
 	void modifyQnaBoard(QnaBoard qnaBoard);
 	void removeQnaBoard(int qnaBno, int uno);
 	QnaBoard getQnaBoard(int qnaBno);
+	Integer prevQnaBno(int qnaBno);
+	Integer nextQnaBno(int qnaBno);
 	Map<String, Object> getQnaBoardList(int pageNum);
 	
 }

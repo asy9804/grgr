@@ -48,6 +48,16 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 		return sqlSession.getMapper(QnaBoardMapper.class).selectQnaBoardList(map);
 	}
 
+	@Override
+	public Integer selectPrevQnaBno(int qnaBno) {
+		return sqlSession.getMapper(QnaBoardMapper.class).selectPrevQnaBno(qnaBno);
+	}
+
+	@Override
+	public Integer selectNextQnaBno(int qnaBno) {
+		return sqlSession.getMapper(QnaBoardMapper.class).selectNextQnaBno(qnaBno);
+	}
+
 	
 	
 	
