@@ -10,6 +10,7 @@ UNO               		NUMBER
 QNA_KEYWORD             VARCHAR2(20)         
 QNA_TITLE      NOT NULL VARCHAR2(100)  
 QNA_CONTENT    NOT NULL VARCHAR2(2000) 
+QNA_VIEW_CNT            NUMBER         
 QNA_BLINDSTATE          NUMBER         
 QNA_REGDATE             DATE           
 QNA_MODIFYDATE          DATE           
@@ -25,6 +26,7 @@ public class QnaBoard {
 	private String qnakeyword;
 	private String qnaTitle;
 	private String qnaContent;
+	private int qnaViewCnt;
 	private int qnaBlindstate;
 	private String qnaRegdate;
 	private String qnaModifydate;
