@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.grgr.mapper.QnaBoardMapper">
+	<!-- 검색 조건문 -->
+	<!-- TC:제목+내용, T: 제목, W: 작성자, -->
+	<sql id="search">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<choose>
+				<when test="searchType == 'TC'.toString()">
+					qna_title like '%'||#{keyword}||'%' OR qna_content like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchType == 'T'.toString()">
+					qna_title like '%'||#{keyword}||'%'
+				</when>
+				<!-- <when test='searchType == "W"'>
+					writer like '%'||#{keyword}||'%'
+				</when> -->
+			</choose>
+		</trim>
+	</sql>
+
 	<!-- 게시글 삽입 -->
 	<insert id="insertQnaBoard">
 		<selectKey resultType="int" keyProperty="qna_bno" order="BEFORE">
@@ -36,6 +54,13 @@
 	</select>
 	 -->
 	 
+	<!-- 총게시글 수 -->
+	<select id="qnaBoardCount" resultType="int">
+		select count(*) from qna_board where <if test='keyword!=null and keyword != ""'><include refid="search"></include></if>
+		qna_blindstate=1
+
+	</select>
+	 
 	<!-- n번 게시글 -->
 	<select id="selectQnaBoard" resultType="QnaBoard">
 		select qna_bno, uno,
@@ -56,11 +81,12 @@
 		from qna_board where qna_bno &gt; #{qnaBno} and qna_blindstate = 1
 	</select>
 	
-	<!-- 총 게시글 개수 검색 -->
+	<!-- 총 게시글 개수 검색 
 	<select id="selectQnaBoardCount" resultType="int">
 		select count(*) 
 		from qna_board
 	</select>
+	-->
 	
 	<!-- 게시글 목록 검색 -->
 	<select id="selectQnaBoardList" resultType="QnaBoard">

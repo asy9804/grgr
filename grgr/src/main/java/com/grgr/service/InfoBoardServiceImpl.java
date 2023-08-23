@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.grgr.dao.InfoBoardDAO;
 import com.grgr.dto.InfoBoard;
 import com.grgr.util.Pager;
+import com.grgr.util.SearchCondition;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,11 +19,15 @@ public class InfoBoardServiceImpl implements InfoBoardService {
 	private final InfoBoardDAO infoBoardDAO;
 
 	@Override
-	public int getInfoCount(String searchType, String keyword) {
+	public int getInfoCount(SearchCondition searchCondition) {
 		Map<String, Object> searchMap = new HashMap<String, Object>();
-		if(searchType!=null && keyword!=null) {
-			searchMap.put("searchType", searchType);
-			searchMap.put("keyword", keyword);
+		if (searchCondition != null) {
+			if (searchCondition.getSearchType() != null && !searchCondition.getSearchType().isEmpty()) {
+				searchMap.put("searchType", searchCondition.getSearchType());
+			}
+			if (searchCondition.getKeyword() != null && !searchCondition.getKeyword().isEmpty()) {
+				searchMap.put("keyword", searchCondition.getKeyword());
+			}
 		}
 		searchMap.put("infoLoc", "강남구");
 		return infoBoardDAO.infoBoardCount(searchMap);
@@ -30,7 +35,6 @@ public class InfoBoardServiceImpl implements InfoBoardService {
 
 	@Override
 	public void addInfoBoard(InfoBoard infoBoard) {
-		// TODO Auto-generated method stub
 		infoBoardDAO.insertInfoBoard(infoBoard);
 	}
 
@@ -61,43 +65,70 @@ public class InfoBoardServiceImpl implements InfoBoardService {
 	}
 
 	@Override
-	public Map<String, Object> getInfoBoardList(int pageNum, String searchType, String keyword) {
-		
+	public Map<String, Object> getInfoBoardList(SearchCondition searchCondition) {
 		Map<String, Object> searchMap = new HashMap<String, Object>();
-		if(searchType!=null && keyword!=null) {
-			searchMap.put("searchType", searchType);
-			searchMap.put("keyword", keyword);
+		if (searchCondition != null) {
+			if (searchCondition.getSearchType() != null && !searchCondition.getSearchType().isEmpty()) {
+				searchMap.put("searchType", searchCondition.getSearchType());
+			}
+			if (searchCondition.getKeyword() != null && !searchCondition.getKeyword().isEmpty()) {
+				searchMap.put("keyword", searchCondition.getKeyword());
+			}
 		}
 		searchMap.put("infoLoc", "강남구");
 
-		
 		int totalBoard = infoBoardDAO.infoBoardCount(searchMap);
-		
-		Pager pager = new Pager(pageNum, totalBoard, 10, 10);
-
+		//
+		Pager pager = new Pager(totalBoard, searchCondition);
+		// 페이징 계산
 		searchMap.put("startRow", pager.getStartRow());
 		searchMap.put("endRow", pager.getEndRow());
-		// 위치 추가시 String infoLoc 추가 
-		
 
 		List<InfoBoard> infoBoardList = infoBoardDAO.selectInfoBoardList(searchMap);
 
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("infoBoardList", infoBoardList);
-		resultMap.put("pager", pager);
+		resultMap.put("pager", pager); // pager 객체를 반환
 		resultMap.put("searchMap", searchMap);
 
 		return resultMap;
 	}
 
 	@Override
-	public Integer prevInfoBno(int infoBno) {
-		return infoBoardDAO.selectPrevInfoBno(infoBno);
+	public Integer prevInfoBno(SearchCondition searchCondition, int infoBno) {
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		if (searchCondition != null) {
+			if (searchCondition.getSearchType() != null && !searchCondition.getSearchType().isEmpty()) {
+				searchMap.put("searchType", searchCondition.getSearchType());
+			}
+			if (searchCondition.getKeyword() != null && !searchCondition.getKeyword().isEmpty()) {
+				searchMap.put("keyword", searchCondition.getKeyword());
+			}
+		}
+		searchMap.put("infoLoc", "강남구");
+		searchMap.put("infoBno", infoBno);
+		
+		return infoBoardDAO.selectPrevInfoBno(searchMap);
 	}
 
 	@Override
-	public Integer nextInfoBno(int infoBno) {
-		return infoBoardDAO.selectNextInfoBno(infoBno);
+	public Integer nextInfoBno(SearchCondition searchCondition, int infoBno) {
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		if (searchCondition != null) {
+			if (searchCondition.getSearchType() != null && !searchCondition.getSearchType().isEmpty()) {
+				searchMap.put("searchType", searchCondition.getSearchType());
+			}
+			if (searchCondition.getKeyword() != null && !searchCondition.getKeyword().isEmpty()) {
+				searchMap.put("keyword", searchCondition.getKeyword());
+			}
+		}
+		searchMap.put("infoLoc", "강남구");
+		searchMap.put("infoBno", infoBno);
+		
+		
+		
+
+		return infoBoardDAO.selectNextInfoBno(searchMap);
 	}
 
 }

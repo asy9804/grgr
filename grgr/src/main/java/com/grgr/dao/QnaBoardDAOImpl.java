@@ -18,6 +18,11 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 	private final SqlSession sqlSession;
 
 	@Override
+	public int qnaBoardCount(Map<String, Object> map) {
+		return sqlSession.getMapper(QnaBoardMapper.class).qnaBoardCount(map);
+	}
+
+	@Override
 	public int insertQnaBoard(QnaBoard qnaBoard) {
 		return sqlSession.getMapper(QnaBoardMapper.class).insertQnaBoard(qnaBoard);
 	}
@@ -29,7 +34,6 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 
 	@Override
 	public int deleteQnaBoard(int qnaBno, int uno) {
-		//return sqlSession.getMapper(QnaBoardMapper.class).deleteQnaBoard(qna_bno);
 		return sqlSession.getMapper(QnaBoardMapper.class).deleteQnaBoard(qnaBno, uno);
 	}
 
@@ -37,28 +41,19 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 	public QnaBoard selectQnaBoard(int qnaBno) {
 		return sqlSession.getMapper(QnaBoardMapper.class).selectQnaBoard(qnaBno);
 	}
+	
+	@Override
+	public Integer selectPrevQnaBno(Map<String, Object> map) {
+		return sqlSession.getMapper(QnaBoardMapper.class).selectPrevQnaBno(map);
+	}
 
 	@Override
-	public int selectQnaBoardCount() {
-		return sqlSession.getMapper(QnaBoardMapper.class).selectQnaBoardCount();
+	public Integer selectNextQnaBno(Map<String, Object> map) {
+		return sqlSession.getMapper(QnaBoardMapper.class).selectNextQnaBno(map);
 	}
-	
+
 	@Override
 	public List<QnaBoard> selectQnaBoardList(Map<String, Object> map) {
 		return sqlSession.getMapper(QnaBoardMapper.class).selectQnaBoardList(map);
 	}
-
-	@Override
-	public Integer selectPrevQnaBno(int qnaBno) {
-		return sqlSession.getMapper(QnaBoardMapper.class).selectPrevQnaBno(qnaBno);
-	}
-
-	@Override
-	public Integer selectNextQnaBno(int qnaBno) {
-		return sqlSession.getMapper(QnaBoardMapper.class).selectNextQnaBno(qnaBno);
-	}
-
-	
-	
-	
 }

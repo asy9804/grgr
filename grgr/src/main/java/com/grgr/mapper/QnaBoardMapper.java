@@ -8,13 +8,12 @@ import org.apache.ibatis.annotations.Param;
 import com.grgr.dto.QnaBoard;
 
 public interface QnaBoardMapper {
+	int qnaBoardCount(Map<String, Object> map);
 	int insertQnaBoard(QnaBoard qnaBoard);
 	int updateQnaBoard(QnaBoard qnaBoard);
-//	int deleteQnaBoard(int qnaBno);
 	int deleteQnaBoard(@Param("qnaBno") int qnaBno,@Param("uno") int uno);
-	QnaBoard selectQnaBoard(int qnaBno);
-	Integer selectPrevQnaBno(int qnaBno);
-	Integer selectNextQnaBno(int qnaBno);
-	int selectQnaBoardCount();
+	QnaBoard selectQnaBoard(int infoBno);
+	Integer selectPrevQnaBno(Map<String, Object> map);
+	Integer selectNextQnaBno(Map<String, Object> map);
 	List<QnaBoard> selectQnaBoardList(Map<String, Object> map);
 }

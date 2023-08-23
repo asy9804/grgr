@@ -7,23 +7,22 @@
 	<sql id="search">
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 			<choose>
-				<when test="searchType == 'TC'">
+				<when test="searchType == 'TC'.toString()">
 					info_title like '%'||#{keyword}||'%' OR info_content like '%'||#{keyword}||'%'
 				</when>
-				<when test="searchType == 'T'">
+				<when test="searchType == 'T'.toString()">
 					info_title like '%'||#{keyword}||'%'
 				</when>
-				<!-- <when test="searchType == 'W'">
+				<!-- <when test='searchType == "W"'>
 					writer like '%'||#{keyword}||'%'
 				</when> -->
 			</choose>
 		</trim>
 	</sql>
-	
 	<!-- 총게시글 수 -->
-	<select id="infoBoardCount">
-		SELECT COUNT(*) FROM INFO_BOARD where <if test="keyword!=null and keyword != ''"><include refid="search"></include></if>
-		info_blindstate=1
+	<select id="infoBoardCount" resultType="int">
+		SELECT COUNT(*) FROM INFO_BOARD where <if test='keyword!=null and keyword != ""'><include refid="search"></include></if>
+		info_Loc='강남구' and info_blindstate=1
 
 	</select>
 
@@ -44,7 +43,7 @@
 	<update id="updateInfoBoard">
 		update info_board set
 		info_title=#{infoTitle},
-		info_content = #{infoContent}, info_update=SYSDATE,
+		info_content = #{infoContent}, info_update=sysdate,
 		info_update_uno=#{uno}
 		where info_bno=#{infoBno} and uno=#{uno}
 	</update>
@@ -52,7 +51,7 @@
 	<!-- 자신의 게시글 삭제 -->
 	<update id="deleteInfoBoard">
 		update info_board set info_blindstate = 3,
-		info_update=SYSDATE, info_update_uno = #{uno}
+		info_update=sysdate, info_update_uno = #{uno}
 		where
 		info_bno=#{infoBno}
 		and uno=#{uno}
@@ -62,7 +61,7 @@
 	<update id="blindInfoBoard">
 		update info_board set
 		info_blindstate = 2,
-		info_update=SYSDATE, info_update_uno = #{uno}
+		info_update=sysdate, info_update_uno = #{uno}
 		where
 		info_bno=#{infoBno}
 	</update>
@@ -80,16 +79,18 @@
 
 
 	<!-- 이전 글 번호 찾기 -->
-	<select id="selectPrevInfoBno" resultType="Integer">
+	<select id="selectPrevInfoBno" resultType="int">
 		select max(INFO_BNO)
-		from info_board where info_bno &lt; #{infoBno} and info_blindstate = 1
-	</select>
+		from info_board where <if test='keyword!=null and keyword != ""'><include refid="search"/></if> 
+		info_Loc='강남구' and info_bno &lt; #{infoBno} and info_blindstate = 1
+	</select> 
 
 	<!-- 다음 글 번호 찾기 -->
-	<select id="selectNextInfoBno" resultType="Integer">
+ 	<select id="selectNextInfoBno" resultType="int">
 		select min(INFO_BNO)
-		from info_board where info_bno &gt; #{infoBno} and info_blindstate = 1
-	</select>
+		from info_board where <if test='keyword!=null and keyword != ""'><include refid="search"/></if> 
+		info_Loc='강남구' and info_bno &gt; #{infoBno} and info_blindstate = 1
+	</select> 
 
 
 
@@ -100,13 +101,13 @@
 		SELECT INFO_BNO, UNO,
 		INFO_KEYWORD,
 		INFO_TITLE, INFO_CONTENT, INFO_LOC,
-		INFO_VIEW_CNT,
+		INFO_VIEW_CNT,	
 		INFO_REPORT_NO,
 		INFO_BLINDSTATE, INFO_REGDATE, INFO_UPDATE,
 		INFO_UPDATE_UNO
 		FROM
 		INFO_BOARD 
-		WHERE <if test="keyword != null and keyword != ''"><include refid="search"></include></if>
+		WHERE <if test='keyword!=null and keyword != ""'><include refid="search"></include></if>
 		INFO_LOC = #{infoLoc} AND INFO_BLINDSTATE = 1
 		ORDER BY INFO_BNO DESC
 		) INFO
@@ -119,7 +120,7 @@
 	<!-- 좋아요 check => BNO가 하나만 존재해야 하므로 BOARDSEQ를 하나만 써야하지않을까? -->
 	<select id="likeCheck" parameterType="map" resultType="int">
 		select
-		count(*) from like where bno = #{infoBno} and uno = #{uno}
+		count(*) from like where  bno = #{infoBno} and uno = #{uno}
 	</select>
 
 

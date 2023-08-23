@@ -69,6 +69,7 @@
 		<div class="container">
 			<div class="w-60 m-x-auto mt-70">
 				<h4 class="mb-30 text-left">글쓰기</h4>
+				<div id="error-message" style="display: none; color: red;">제목 또는 내용이 비었습니다!</div>
 				<c:if test="${not empty msg}">
 					<div class="alert alert-danger">${msg}</div>
 				</c:if>
@@ -124,7 +125,7 @@
 					<!-- / column -->
 
 					<div class="fas mr-10 float-end">
-						<button type="submit" class="btn btn-primary-gradient btn-submit">등록</button>
+						<button type="button" class="btn btn-primary-gradient btn-submit">등록</button>
 
 					</div>
 				</form>
@@ -190,8 +191,22 @@
 	<script
 		src="${pageContext.request.contextPath}/assets/js/jquery.shuffle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/portfolio.js"></script>
+	
+	
 	<script>
 		$(document).ready(function() {
+			document.querySelector('.btn-submit').addEventListener('click', function() {
+			    var title = document.getElementsByName('infoTitle')[0].value;
+			    var content = document.getElementsByName('infoContent')[0].value;
+
+			    if (title.trim() === '' || content.trim() === '') {
+			      alert('제목과 내용을 모두 입력해주세요.');
+			    } else {
+			      document.getElementById('form-validation').submit(); // 폼을 제출합니다.
+			    }
+			  });
+			
+			
 			if (Modernizr.touch) {
 				// show the close overlay button
 				$('.close-overlay').removeClass('hidden');

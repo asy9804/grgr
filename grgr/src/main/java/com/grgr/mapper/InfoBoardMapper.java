@@ -16,8 +16,8 @@ public interface InfoBoardMapper {
 	int increaseInfoViewCnt(int infoBno);
 	int increaseInfoReportNo(int infoBno);
 	InfoBoard selectInfoBoard(int infoBno);
-	Integer selectPrevInfoBno(int infoBno);
-	Integer selectNextInfoBno(int infoBno);
+	Integer selectPrevInfoBno(Map<String, Object> map);
+	Integer selectNextInfoBno(Map<String, Object> map);
 	List<InfoBoard> selectInfoBoardList(Map<String, Object> map);
 	
 	

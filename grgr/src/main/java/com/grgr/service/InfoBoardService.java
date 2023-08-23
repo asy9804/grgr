@@ -3,9 +3,10 @@ package com.grgr.service;
 import java.util.Map;
 
 import com.grgr.dto.InfoBoard;
+import com.grgr.util.SearchCondition;
 
 public interface InfoBoardService {
-	int getInfoCount(String searchType, String keyword);
+	int getInfoCount(SearchCondition searchCondition);
 	void addInfoBoard(InfoBoard infoBoard);
 	void modifyInfoBoard(InfoBoard infoBoard);
 	void removeInfoBoard(int infoBno, int uno);
@@ -13,7 +14,7 @@ public interface InfoBoardService {
 //	int increaseInfoViewCnt(int infoBno);
 //	int increaseInfoReportNo(int infoBno);
 	InfoBoard getInfoBoard(int infoBno);
-	Integer prevInfoBno(int infoBno);
-	Integer nextInfoBno(int infoBno);
-	Map<String, Object> getInfoBoardList(int pageNum, String searchType, String keyword);
+	Integer prevInfoBno(SearchCondition searchCondition, int infoBno);
+	Integer nextInfoBno(SearchCondition searchCondition, int infoBno);
+	Map<String, Object> getInfoBoardList(SearchCondition searchCondition);
 }

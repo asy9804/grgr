@@ -71,15 +71,15 @@ public class InfoBoardDAOImpl implements InfoBoardDAO{
 	}
 
 	@Override
-	public Integer selectPrevInfoBno(int infoBno) {
+	public Integer selectPrevInfoBno(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return sqlSession.getMapper(InfoBoardMapper.class).selectPrevInfoBno(infoBno);
+		return sqlSession.getMapper(InfoBoardMapper.class).selectPrevInfoBno(map);
 	}
 
 	@Override
-	public Integer selectNextInfoBno(int infoBno) {
+	public Integer selectNextInfoBno(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return sqlSession.getMapper(InfoBoardMapper.class).selectNextInfoBno(infoBno);
+		return sqlSession.getMapper(InfoBoardMapper.class).selectNextInfoBno(map);
 	}
 	
 }
