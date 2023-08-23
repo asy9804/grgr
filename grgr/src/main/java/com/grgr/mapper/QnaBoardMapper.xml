@@ -7,24 +7,24 @@
 			select qna_bno_seq.nextval 
 			from dual 
 		</selectKey>
-		insert into qna_board values(#{qna_bno}, #{qna_uno}, #{qna_keyword}, #{qna_title}
-			, #{qna_content}, #{qna_blindstate}, SYSDATE, SYSDATE, #{qna_update_uno})
+		insert into qna_board values(#{qnaBno}, #{uno}, #{qnaKeyword}, #{qnaTitle}
+			, #{qnaContent}, #{qnaBlindstate}, SYSDATE, SYSDATE, #{qnaUpdateUno})
 	</insert>	
 	
 	<!-- 게시글 수정 -->
 	<update id="updateQnaBoard">
-		update qna_board set qna_keyword=#{qna_keyword}
-			, qna_title=#{qna_title}, qna_content=#{qna_content}
-				, qna_blindstate=#{qna_blindstate},qna_modifydate=SYSDATE 
-				,qna_update_uno=#{qna_update_uno}
-		where qna_bno=#{qna_bno} and uno=#{uno}
+		update qna_board set qna_keyword=#{qnaKeyword}
+			, qna_title=#{qnaTitle}, qna_content=#{qnaContent}
+				, qna_blindstate=#{qnaBlindstate},qna_modifydate=SYSDATE 
+				,qna_update_uno=#{qnaUpdateUno}
+		where qna_bno=#{qnaBno} and uno=#{uno}
 	</update>
 	
 	<!-- 게시글 삭제 -->
 	<delete id="deleteQnaBoard">
 		delete 
 		from qna_board=3 
-		where qna_bno=#{qna_bno}
+		where qna_bno=#{qnaBno}
 	</delete>
 	
 	<!-- 게시글 검색 -->

@@ -20,13 +20,13 @@ create sequence qna_bno_seq;
 
 @Data
 public class QnaBoard {
-	private int qna_bno;
+	private int qnaBno;
 	private int uno;
-	private int keyword;
-	private String qna_title;
-	private String qna_content;
-	private int qna_blindstate;
-	private String qna_regdate;
-	private String qna_modifydate;
-	private int qna_update_uno;
+	private int qnakeyword;
+	private String qnaTitle;
+	private String qnaContent;
+	private int qnaBlindstate;
+	private String qnaRegdate;
+	private String qnaModifydate;
+	private int qnaUpdateUno;
 }

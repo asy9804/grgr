@@ -103,7 +103,7 @@
 										id="search-button"
 										class="btn btn-sm btn-primary lh-0 overlapping-btn big-btn pill"
 										type="button">
-										<i class="fas fa-search mr-5"></i> 검색
+										<i class="fas fa-search mr-5"></i>검색
 									</button>
 								</span>
 								<!-- / input-group-btn -->
@@ -127,10 +127,10 @@
 					id="grid" style="clear: both">
 					<!--====================================================================================================  -->
 					<!-- project : 게시글 list 출력 -->
-					<c:forEach items="${infoBoardList}" var="infoBoard">
+					<c:forEach items="${qnaBoardList}" var="qnaBoard">
 						<li class="col-md-12 col-lg-0 project"
-							data-groups='["${infoBoard.infoKeyword}"]'><a
-							href="<c:url value='/infoboard/read?infoBno=${infoBoard.infoBno}&pageNum=${pager.pageNum }'/>">
+							data-groups='["${qnaBoard.qnaKeyword}"]'><a
+							href="<c:url value='/qnaboard/read?qnaBno=${qnaBoard.qnaBno}&pageNum=${pager.pageNum }'/>">
 								<!-- &pageNum=${pageNum} -->
 								<div class="promo-box">
 									<div class="cta p-0">
@@ -142,17 +142,17 @@
 											</div>
 											<!-- / column -->
 											<div class="col-lg-10 text-left tablet-lg-center">
-												<p class="mb-20">${infoBoard.infoTitle}</p>
-												<p class="lead mb-20">${infoBoard.infoContent}</p>
+												<p class="mb-20">${qnaBoard.qnaTitle}</p>
+												<p class="lead mb-20">${qnaBoard.qnaContent}</p>
 												<p class="fs-16 post-meta-small mt-15 mb-0"
 													style="text-align: right">
-													<i class="far fa-calendar-alt mr-5"></i>${infoBoard.infoRegdate}<span
+													<i class="far fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate}<span
 														class="m-x-10 text-muted">|</span> <i
 														class="fas fa-tag mr-10"></i>
 													<c:choose>
-														<c:when test="${infoBoard.infoKeyword=='food'}">맛집</c:when>
-														<c:when test="${infoBoard.infoKeyword=='market'}">기타 후기</c:when>
-														<c:when test="${infoBoard.infoKeyword=='living'}">생활정보</c:when>
+														<c:when test="${qnaBoard.qnaKeyword=='all'}">전체</c:when>
+														<c:when test="${qnaBoard.qnaKeyword=='ilban'}">일반회원</c:when>
+														<c:when test="${qnaBoard.qnaKeyword=='sangkon'}">상권회원</c:when>
 														<c:otherwise>이벤트</c:otherwise>
 													</c:choose>
 												</p>
@@ -179,7 +179,7 @@
 			<c:choose>
 				<c:when test="${pager.startPage != 1 }">
 					<li class="page-item"><a class="page-link"
-						href="<c:url value="/infoboard/list?pageNum=${pager.startPage-1}"/>"><i
+						href="<c:url value="/qnaboardlist?pageNum=${pager.startPage-1}"/>"><i
 							class="fas fa-arrow-left mb-5"></i></a></li>
 				</c:when>
 				<c:otherwise>
@@ -192,11 +192,11 @@
 				<c:choose>
 					<c:when test="${i == pager.pageNum}">
 						<li class="page-item active"><a class="page-link"
-							href="<c:url value='/infoboard/list?pageNum=${i}'/>">${i}</a></li>
+							href="<c:url value='/qnaboard/list?pageNum=${i}'/>">${i}</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="<c:url value='/infoboard/list?pageNum=${i}'/>">${i}</a></li>
+							href="<c:url value='/qnaboard/list?pageNum=${i}'/>">${i}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -204,7 +204,7 @@
 			<c:choose>
 				<c:when test="${pager.endPage != pager.totalPage}">
 					<li class="page-item"><a class="page-link"
-						href="<c:url value="/infoboard/list?pageNum=${pager.endPage+1}"/>"><i
+						href="<c:url value="/qnaboard/list?pageNum=${pager.endPage+1}"/>"><i
 							class="fas fa-arrow-right mb-5"></i></a></li>
 				</c:when>
 				<c:otherwise>

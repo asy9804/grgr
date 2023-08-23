@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
 <!-- Meta -->
 <meta charset="utf-8" />
@@ -227,26 +227,26 @@
 				<div class="col-xl-auto">
 					<a href="#x"
 						class="d-inline title-color primary-hover fs-24 fw-bold mb-15"
-						style="margin: 10px">${infoBoard.infoTitle} </a> 
-						<c:if test="${infoBoard.uno==2 }">
-						<a href="<c:url value='/infoboard/modify?infoBno=${infoBoard.infoBno}'/>"
+						style="margin: 10px">${qnaBoard.qnaoTitle} </a> 
+						<c:if test="${qnaBoard.uno==2 }">
+						<a href="<c:url value='/qnaboard/modify?infoBno=${infoBoard.infoBno}'/>"
 						class="btn btn-xs btn-primary pill"
 						style="float: right; font-size: 15px; margin: 10px"><span>수정</span></a></c:if>
-						<c:if test="${infoBoard.uno==2 }">
-						<a href="<c:url value='/infoboard/remove?infoBno=${infoBoard.infoBno}&uno=${infoBoard.uno}&pageNum=${pageNum }'/>"
+						<c:if test="${qnaBoard.uno==2 }">
+						<a href="<c:url value='/qnaboard/remove?qnaBno=${qnaBoard.qnaBno}&uno=${qnaBoard.uno}&pageNum=${pageNum }'/>"
 						class="btn btn-xs btn-primary pill"
 						style="float: right; font-size: 15px; margin: 10px"><span>삭제</span></a></c:if>
 						
 					<p
 						class="fs-12 post-meta-small p-y-15 pl-15 mb-15 border-secondary"
 						style="clear: both; padding: 10px">
-						<i class="fas fa-calendar-alt mr-5"></i>${infoBoard.infoRegdate }<span
+						<i class="fas fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate }<span
 							class="mr-5 ml-5 text-muted">|</span> <i class="fas fa-user mr-5"></i>
-						${infoBoard.uno } <span class="mr-5 ml-5 text-muted">|</span> <i
-							class="fas fa-tag mr-5"></i>${infoBoard.infoKeyword }
+						${qnaBoard.uno } <span class="mr-5 ml-5 text-muted">|</span> <i
+							class="fas fa-tag mr-5"></i>${qnaBoard.qnaKeyword }
 					</p>
-					<p class="m-y-30">${infoBoard.infoContent}</p>
-					<a href="<c:url value='/infoboard/list?pageNum=${pageNum}' />"
+					<p class="m-y-30">${qnaBoard.qnaContent}</p>
+					<a href="<c:url value='/qnaboard/list?pageNum=${pageNum}' />"
 						class="btn btn-xs btn-primary pill"
 						style="float: right; font-size: 15px"><span>글목록</span></a>
 				</div>
@@ -255,12 +255,12 @@
 				<nav aria-label="pager" style="clear: both; padding-top: 30px">
 					<ul class="pager">
 						<li class="pager-left"><a
-							href="<c:url value='/infoboard/read?infoBno=${prevInfoBno}&pageNum=${pageNum }'/>"><i
+							href="<c:url value='/qnaboard/read?qnaBno=${prevQnaBno}&pageNum=${pageNum }'/>"><i
 								class="fas fa-arrow-left"></i> <span class="ml-5">이전글</span></a></li>
 
 						<c:if test="${!isLastPost}">
 							<li class="pager-right"><a
-								href="<c:url value='/infoboard/read?infoBno=${nextInfoBno}&pageNum=${pageNum }'/>"><span
+								href="<c:url value='/qnaboard/read?qnaoBno=${nextInfoBno}&pageNum=${pageNum }'/>"><span
 									class="mr-5">다음글</span> <i class="fas fa-arrow-right"></i></a></li>
 						</c:if>
 
