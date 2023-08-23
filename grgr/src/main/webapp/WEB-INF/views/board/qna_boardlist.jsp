@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="kor">
+<html>
 <head>
 <!-- Meta -->
 <meta charset="utf-8" />
@@ -60,8 +61,6 @@
 	<div id="top"></div>
 	<!-- / top -->
 
-
-
 	<!-- 큰 컨테이너  -->
 	<section class="big">
 		<div class="container">
@@ -87,9 +86,9 @@
 							<input type="hidden" name="pageNum" value="1">
 							<div class="col-md-3 tablet-top" style="padding-right: 10px">
 								<select class="custom-select" id="select" name="searchType">
-									<option value="TC">제목+내용</option>
-									<option value="T">제목</option>
-									<option value="W">작성자</option>
+									<option value="TC"  ${pager.searchCondition.searchType == 'TC' ? 'selected' : ''}>제목+내용</option>
+									<option value="T" ${pager.searchCondition.searchType == 'T' ? 'selected' : ''}>제목</option>
+									<option value="W" ${pager.searchCondition.searchType == 'W' ? 'selected' : ''}>작성자</option>
 									<!-- 나머지 옵션 -->
 								</select>
 								<!-- / custom-select -->
@@ -97,13 +96,11 @@
 							<!-- / column -->
 							<div class="input-group input-w-overlap-btn mb-0">
 								<input type="text" class="form-control pill" name="keyword"
-									placeholder="검색어를 입력하세요."/> 
-									<span class="input-group-btn">
-									<button
-										id="search-button"
+									placeholder="검색어를 입력하세요." value="${pager.searchCondition.keyword }"/> <span class="input-group-btn">
+									<button id="search-button"
 										class="btn btn-sm btn-primary lh-0 overlapping-btn big-btn pill"
 										type="button">
-										<i class="fas fa-search mr-5"></i>검색
+										<i class="fas fa-search mr-5"></i> 검색
 									</button>
 								</span>
 								<!-- / input-group-btn -->
@@ -116,7 +113,7 @@
 				<!-- 검색입력창 -->
 
 				<!-- 글쓰기버튼 -->
-				<a href="<c:url value='/infoboard/write'/>"
+				<a href="<c:url value='/qnaboard/write'/>"
 					class="btn btn-primary-gradient m-y-10 mr-10"
 					style="float: right; display: block"><span
 					class="fas fa-edit mr-10"></span> <span style="font-size: 20px">글쓰기</span></a>
@@ -129,8 +126,8 @@
 					<!-- project : 게시글 list 출력 -->
 					<c:forEach items="${qnaBoardList}" var="qnaBoard">
 						<li class="col-md-12 col-lg-0 project"
-							data-groups='["${qnaBoard.qnaKeyword}"]'><a
-							href="<c:url value='/qnaboard/read?qnaBno=${qnaBoard.qnaBno}&pageNum=${pager.pageNum }'/>">
+							data-groups='["${qnaBoard.qnaKeyword}"]'>
+							<a href="<c:url value='/qnaboard/read${pager.searchCondition.getQueryString()}&qnaBno=${qnaBoard.qnaBno}'/>">
 								<!-- &pageNum=${pageNum} -->
 								<div class="promo-box">
 									<div class="cta p-0">
@@ -179,8 +176,8 @@
 			<c:choose>
 				<c:when test="${pager.startPage != 1 }">
 					<li class="page-item"><a class="page-link"
-						href="<c:url value="/qnaboardlist?pageNum=${pager.startPage-1}"/>"><i
-							class="fas fa-arrow-left mb-5"></i></a></li>
+						href="<c:url value="/qnaboardlist?pageNum=${pager.startPage-1}"/>">
+						<i class="fas fa-arrow-left mb-5"></i></a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item disabled"><a class="page-link" href="#x"><i
