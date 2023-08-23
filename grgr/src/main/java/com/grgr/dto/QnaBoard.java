@@ -7,7 +7,7 @@ import lombok.Data;
 -------------- -------- -------------- 
 QNA_BNO        NOT NULL NUMBER         
 UNO               		NUMBER         
-QNA_KEYWORD             NUMBER         
+QNA_KEYWORD             VARCHAR2(20)         
 QNA_TITLE      NOT NULL VARCHAR2(100)  
 QNA_CONTENT    NOT NULL VARCHAR2(2000) 
 QNA_BLINDSTATE          NUMBER         
@@ -22,7 +22,7 @@ create sequence qna_bno_seq;
 public class QnaBoard {
 	private int qnaBno;
 	private int uno;
-	private int qnakeyword;
+	private String qnakeyword;
 	private String qnaTitle;
 	private String qnaContent;
 	private int qnaBlindstate;
