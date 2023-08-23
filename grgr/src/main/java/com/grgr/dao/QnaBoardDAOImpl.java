@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.grgr.dto.QnaBoard;
+import com.grgr.mapper.InfoBoardMapper;
 import com.grgr.mapper.QnaBoardMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -27,13 +28,14 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 	}
 
 	@Override
-	public int deleteQnaBoard(int qna_bno) {
-		return sqlSession.getMapper(QnaBoardMapper.class).deleteQnaBoard(qna_bno);
+	public int deleteQnaBoard(int qnaBno, int uno) {
+		//return sqlSession.getMapper(QnaBoardMapper.class).deleteQnaBoard(qna_bno);
+		return sqlSession.getMapper(QnaBoardMapper.class).deleteQnaBoard(qnaBno, uno);
 	}
 
 	@Override
-	public QnaBoard selectQnaBoard(int qna_bno) {
-		return sqlSession.getMapper(QnaBoardMapper.class).selectQnaBoard(qna_bno);
+	public QnaBoard selectQnaBoard(int qnaBno) {
+		return sqlSession.getMapper(QnaBoardMapper.class).selectQnaBoard(qnaBno);
 	}
 
 	@Override

@@ -28,13 +28,13 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	}
 
 	@Override
-	public void removeQnaBoard(int qna_bno) {
-		qnaBoardDAO.deleteQnaBoard(qna_bno);		
+	public void removeQnaBoard(int qnaBno, int uno) {
+		qnaBoardDAO.deleteQnaBoard(qnaBno, uno);		
 	}
 
 	@Override
-	public QnaBoard getQnaBoard(int qna_bno) {
-		return 	qnaBoardDAO.selectQnaBoard(qna_bno);
+	public QnaBoard getQnaBoard(int qnaBno) {
+		return 	qnaBoardDAO.selectQnaBoard(qnaBno);
 	}
 
 	@Override
