@@ -43,7 +43,7 @@
 	<update id="updateInfoBoard">
 		update info_board set
 		info_title=#{infoTitle},
-		info_content = #{infoContent}, info_update=sysdate,
+		info_content = #{infoContent}, info_update=SYSDATE,
 		info_update_uno=#{uno}
 		where info_bno=#{infoBno} and uno=#{uno}
 	</update>
@@ -51,7 +51,7 @@
 	<!-- 자신의 게시글 삭제 -->
 	<update id="deleteInfoBoard">
 		update info_board set info_blindstate = 3,
-		info_update=sysdate, info_update_uno = #{uno}
+		info_update=SYSDATE, info_update_uno = #{uno}
 		where
 		info_bno=#{infoBno}
 		and uno=#{uno}
@@ -61,7 +61,7 @@
 	<update id="blindInfoBoard">
 		update info_board set
 		info_blindstate = 2,
-		info_update=sysdate, info_update_uno = #{uno}
+		info_update=SYSDATE, info_update_uno = #{uno}
 		where
 		info_bno=#{infoBno}
 	</update>

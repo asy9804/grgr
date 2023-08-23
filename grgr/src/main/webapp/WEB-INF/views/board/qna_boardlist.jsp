@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
 <!-- Meta -->
 <meta charset="utf-8" />
@@ -65,20 +65,14 @@
 	<!-- 큰 컨테이너  -->
 	<section class="big">
 		<div class="container">
-			<h2 class="hidden">Info Board List</h2>
+			<h2 class="hidden">Qna Board List</h2>
 			<!-- 키워드 -->
-			<ul class="portfolio-filter list-inline text-center mb-30">
-
-				<li id="portfolio-filter-list"><a href="#" data-group="all"
-					class="active ml-2">강남구</a></li>
+			<ul class="portfolio-filter list-inline text-center mb-30"> 
+				<li id="portfolio-filter-list"><a href="#" data-group="all" class="active ml-2">전체</a></li>
 					<!-- ${userInfo_Loc} -->
-				<li id="portfolio-filter-list"><a href="#" data-group="food">맛집후기</a>
+				<li id="portfolio-filter-list"><a href="#" data-group="ilban">일반회원</a>
 				</li>
-				<li id="portfolio-filter-list"><a href="#" data-group="market">동네후기</a>
-				</li>
-				<li id="portfolio-filter-list"><a href="#" data-group="living">생활정보</a>
-				</li>
-				<li id="portfolio-filter-list"><a href="#" data-group="event">이벤트</a>
+				<li id="portfolio-filter-list"><a href="#" data-group="sangkwon">상권회원</a>
 				</li>
 			</ul>
 

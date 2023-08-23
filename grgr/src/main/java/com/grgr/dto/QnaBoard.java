@@ -21,7 +21,7 @@ create sequence qna_bno_seq;
 @Data
 public class QnaBoard {
 	private int qna_bno;
-	private int qna_uno;
+	private int uno;
 	private int keyword;
 	private String qna_title;
 	private String qna_content;

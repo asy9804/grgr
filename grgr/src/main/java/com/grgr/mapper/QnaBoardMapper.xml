@@ -13,10 +13,11 @@
 	
 	<!-- 게시글 수정 -->
 	<update id="updateQnaBoard">
-		update qna_board set qna_uno=#{qna_uno}, qna_keyword=#{qna_keyword}
+		update qna_board set qna_keyword=#{qna_keyword}
 			, qna_title=#{qna_title}, qna_content=#{qna_content}
-				, qna_blindstate=#{qna_blindstate}, qna_update_uno=#{qna_update_uno}
-		where UNO=#{UNO}
+				, qna_blindstate=#{qna_blindstate},qna_modifydate=SYSDATE 
+				,qna_update_uno=#{qna_update_uno}
+		where qna_bno=#{qna_bno} and uno=#{uno}
 	</update>
 	
 	<!-- 게시글 삭제 -->
@@ -44,7 +45,7 @@
 	<select id="selectQnaBoardList" resultType="QnaBoard">
 		select * 
 		from (select ROWNUM rn, board.* 
-			from(select qna_title, qna_content, qna_blindstate, qna_regdate	
+			from(select qna_keyword, qna_title, qna_content, qna_blindstate, qna_regdate	
 				, qna_modifydate, qna_update_uno 
 				from qna_board 
 				where qna_blindstate=1 

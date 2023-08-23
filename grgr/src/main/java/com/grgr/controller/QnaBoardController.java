@@ -16,7 +16,7 @@ public class QnaBoardController {
 	private final QnaBoardService qnaBoardService;
 	
 	//게시글 목록 요청
-	@RequestMapping("/board_list")
+	@RequestMapping("/boardlist")
 	public String qnaBoardList() {
 		log.info("QnaBoardController() 클래스의 qnaBoardList() 메소드 호출");
 		return "/board_list";
