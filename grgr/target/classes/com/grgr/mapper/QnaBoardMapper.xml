@@ -26,24 +26,37 @@
 		from qna_board=3 
 		where qna_bno=#{qnaBno}
 	</delete>
-	
-	<!-- 게시글 검색 -->
+	 
+	<!-- 게시글 페이지 검색 >> infoboard 참고하여 하기 구문으로 변경
 	<select id="selectQnaBoard" resultType="QnaBoard">
-		select qna_blindstate, qna_title, qna_content from qna_board 
-		where qna_blindstate=1 
+		select qna_bno, uno, qna_keyword, qna_title, qna_content from qna_board 
+		where qna_blindstate=1
 			and (qna_title like '%'||#{qna_title}||'%' 
-				or qna_content like '%'||#{qna_content}||'%') 
+				or qna_content like '%'||#{qna_content}||'%')
 	</select>
-	
+	 -->
+	 
 	<!-- n번 게시글 -->
-	<select id="selectInfoBoard" resultType="InfoBoard">
+	<select id="selectQnaBoard" resultType="QnaBoard">
 		select qna_bno, uno,
 		qna_keyword, qna_title, qna_content, qna_blindstate, qna_regdate, qna_update,
 		qna_update_uno from qna_board
 		where qna_bno=#{qnaBno}
 	</select>
 	
-	<!-- 게시글 개수 검색 -->
+	<!-- 이전 글 번호 찾기 -->
+	<select id="selectPrevInfoBno" resultType="Integer">
+		select max(qna_bno)
+		from qna_board where qna_bno &lt; #{qnaBno} and qna_blindstate = 1
+	</select>
+
+	<!-- 다음 글 번호 찾기 -->
+	<select id="selectNextInfoBno" resultType="Integer">
+		select min(qna_bno)
+		from qna_board where qna_bno &gt; #{qnaBno} and qna_blindstate = 1
+	</select>
+	
+	<!-- 총 게시글 개수 검색 -->
 	<select id="selectQnaBoardCount" resultType="int">
 		select count(*) 
 		from qna_board
@@ -53,12 +66,12 @@
 	<select id="selectQnaBoardList" resultType="QnaBoard">
 		select * 
 		from (select ROWNUM rn, board.* 
-			from(select qna_keyword, qna_title, qna_content, qna_blindstate, qna_regdate	
+			from(select qna_bno, uno, qna_keyword, qna_title, qna_content, qna_blindstate, qna_regdate	
 				, qna_modifydate, qna_update_uno 
 				from qna_board 
 				where qna_blindstate=1 
-					and (qna_title like '%'||#{qna_title}||'%'
-						or qna_content like '%'||#{qna_content}||'%') 
+					and (qna_title like '%'||#{qnaTitle}||'%'
+						or qna_content like '%'||#{qnaContent}||'%') 
 				order by qna_bno) 
 			board)
 		 where rn between #{startRow} and #{endRow}

@@ -14,5 +14,7 @@ public interface QnaBoardMapper {
 	int deleteQnaBoard(@Param("qnaBno") int qnaBno,@Param("uno") int uno);
 	QnaBoard selectQnaBoard(int qnaBno);
 	int selectQnaBoardCount();
+	Integer selectPrevInfoBno(int qnaBno);
+	Integer selectNextInfoBno(int qnaBno);
 	List<QnaBoard> selectQnaBoardList(Map<String, Object> map);
 }

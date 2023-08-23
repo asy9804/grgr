@@ -19,6 +19,7 @@
 			</choose>
 		</trim>
 	</sql>
+	
 	<!-- 총게시글 수 -->
 	<select id="infoBoardCount">
 		SELECT COUNT(*) FROM INFO_BOARD where <if test="keyword!=null and keyword != ''"><include refid="search"></include></if>
