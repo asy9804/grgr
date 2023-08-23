@@ -35,6 +35,14 @@
 				or qna_content like '%'||#{qna_content}||'%') 
 	</select>
 	
+	<!-- n번 게시글 -->
+	<select id="selectInfoBoard" resultType="InfoBoard">
+		select qna_bno, uno,
+		qna_keyword, qna_title, qna_content, qna_blindstate, qna_regdate, qna_update,
+		qna_update_uno from qna_board
+		where qna_bno=#{qnaBno}
+	</select>
+	
 	<!-- 게시글 개수 검색 -->
 	<select id="selectQnaBoardCount" resultType="int">
 		select count(*) 

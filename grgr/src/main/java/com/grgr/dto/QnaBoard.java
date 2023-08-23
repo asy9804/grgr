@@ -6,7 +6,7 @@ import lombok.Data;
 이름             널?       유형             
 -------------- -------- -------------- 
 QNA_BNO        NOT NULL NUMBER         
-QNA_UNO                 NUMBER         
+UNO               		NUMBER         
 QNA_KEYWORD             NUMBER         
 QNA_TITLE      NOT NULL VARCHAR2(100)  
 QNA_CONTENT    NOT NULL VARCHAR2(2000) 

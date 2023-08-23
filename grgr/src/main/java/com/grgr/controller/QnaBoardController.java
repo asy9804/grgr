@@ -9,17 +9,17 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequestMapping("/qna")
+@RequestMapping("/qnaboard")
 @RequiredArgsConstructor
 @Slf4j
 public class QnaBoardController {
 	private final QnaBoardService qnaBoardService;
 	
 	//게시글 목록 요청
-	@RequestMapping("/boardlist")
+	@RequestMapping("/list")
 	public String qnaBoardList() {
 		log.info("QnaBoardController() 클래스의 qnaBoardList() 메소드 호출");
-		return "/board_list";
+		return "board/qna_boardlist";
 	}
 	
 	
