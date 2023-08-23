@@ -107,7 +107,7 @@
 	
 	<!-- 조회수 증가 -->
 	<update id="increaseQnaViewCnt">
-		update qna_board set qna_view_cnt = qna_view_cnt +1
+		update qna_board set qna_view_cnt = qna_view_cnt+1
 		where qna_bno = #{qnaBno}
 	</update>
 </mapper>
