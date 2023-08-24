@@ -23,7 +23,7 @@ create sequence qna_bno_seq;
 public class QnaBoard {
 	private int qnaBno;
 	private int uno;
-	private String qnakeyword;
+	private String qnaKeyword;
 	private String qnaTitle;
 	private String qnaContent;
 	private int qnaViewCnt;

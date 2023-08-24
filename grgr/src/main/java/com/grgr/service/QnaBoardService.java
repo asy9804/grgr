@@ -10,6 +10,7 @@ public interface QnaBoardService {
 	void addQnaBoard(QnaBoard qnaBoard);
 	void modifyQnaBoard(QnaBoard qnaBoard);
 	void removeQnaBoard(int qnaBno, int uno);
+	void riseQnaBno(int qnaBno);
 	QnaBoard getQnaBoard(int qnaBno);
 	Integer prevQnaBno(SearchCondition searchCondition, int qnaBno);
 	Integer nextQnaBno(SearchCondition searchCondition, int qnaBno);

@@ -38,6 +38,11 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 	}
 
 	@Override
+	public int increaseQnaViewCnt(int qnaBno) {
+		return sqlSession.getMapper(QnaBoardMapper.class).increaseQnaViewCnt(qnaBno);
+	}
+	
+	@Override
 	public QnaBoard selectQnaBoard(int qnaBno) {
 		return sqlSession.getMapper(QnaBoardMapper.class).selectQnaBoard(qnaBno);
 	}
