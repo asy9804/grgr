@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.grgr.mapper.QnaBoardMapper">
+	
+	<!-- 게시글 페이지 검색 >> infoboard 참고하여 하기 구문으로 변경
+	<select id="selectQnaBoard" resultType="QnaBoard">
+		select qna_bno, uno, qna_keyword, qna_title, qna_content from qna_board 
+		where qna_blindstate=1
+			and (qna_title like '%'||#{qna_title}||'%' 
+				or qna_content like '%'||#{qna_content}||'%')
+	</select>
+	 -->
+	
 	<!-- 검색 조건문 -->
 	<!-- TC:제목+내용, T: 제목, W: 작성자, -->
 	<sql id="search">
@@ -21,12 +31,12 @@
 
 	<!-- 게시글 삽입 -->
 	<insert id="insertQnaBoard">
-		<selectKey resultType="int" keyProperty="qna_bno" order="BEFORE">
+		<selectKey resultType="int" keyProperty="qnaBno" order="BEFORE">
 			select qna_bno_seq.nextval 
 			from dual 
 		</selectKey>
 		insert into qna_board values(#{qnaBno}, #{uno}, #{qnaKeyword}, #{qnaTitle}
-			, #{qnaContent}, #{qna_view_cnt}, #{qnaBlindstate}, SYSDATE
+			, #{qnaContent}, #{qnaViewCnt}, #{qnaBlindstate}, SYSDATE
 			, SYSDATE, #{qnaUpdateUno})
 	</insert>	
 	
@@ -45,15 +55,6 @@
 		from qna_board=3 
 		where qna_bno=#{qnaBno}
 	</delete>
-	 
-	<!-- 게시글 페이지 검색 >> infoboard 참고하여 하기 구문으로 변경
-	<select id="selectQnaBoard" resultType="QnaBoard">
-		select qna_bno, uno, qna_keyword, qna_title, qna_content from qna_board 
-		where qna_blindstate=1
-			and (qna_title like '%'||#{qna_title}||'%' 
-				or qna_content like '%'||#{qna_content}||'%')
-	</select>
-	 -->
 	 
 	<!-- 총게시글 수 -->
 	<select id="qnaBoardCount" resultType="int">
@@ -108,6 +109,6 @@
 	<!-- 조회수 증가 -->
 	<update id="increaseQnaViewCnt">
 		update qna_board set qna_view_cnt = qna_view_cnt+1
-		where qna_bno = #{qnaBno}
+		where qna_bno=#{qnaBno}
 	</update>
 </mapper>

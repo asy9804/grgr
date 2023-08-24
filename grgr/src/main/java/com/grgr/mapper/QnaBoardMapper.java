@@ -12,7 +12,7 @@ public interface QnaBoardMapper {
 	int insertQnaBoard(QnaBoard qnaBoard);
 	int updateQnaBoard(QnaBoard qnaBoard);
 	int deleteQnaBoard(@Param("qnaBno") int qnaBno,@Param("uno") int uno);
-	int increaseQnaViewCnt(int qnaBno);
+	int increaseQnaViewCnt(@Param("qnaBno") int qnaBno);
 	QnaBoard selectQnaBoard(int qnaBno);
 	Integer selectPrevQnaBno(Map<String, Object> map);
 	Integer selectNextQnaBno(Map<String, Object> map);
