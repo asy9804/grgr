@@ -49,6 +49,11 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	}
 
 	@Override
+	public void riseQnaViewCnt(int qnaBno) {
+		qnaBoardDAO.increaseQnaViewCnt(qnaBno);
+	}
+	
+	@Override
 	public QnaBoard getQnaBoard(int qnaBno) {
 		return qnaBoardDAO.selectQnaBoard(qnaBno);
 	}
@@ -114,5 +119,7 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 		resultMap.put("searchMap", searchMap);
 
 		return resultMap;
-	}	
+	}
+
+		
 }
