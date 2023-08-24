@@ -38,7 +38,9 @@ public class QnaBoardController {
 	@RequestMapping("/list")
 	public String list(SearchCondition searchCondition, Model model) {
 		log.info("QnaBoardController() 클래스의 qnaBoardList() 메소드 호출");
+		
 	    Map<String, Object> result = qnaBoardService.getQnaBoardList(searchCondition);
+	    
 	    model.addAttribute("qnaBoardList", result.get("qnaBoardList"));
 	    model.addAttribute("pager", result.get("pager"));
 	    return "board/qna_boardlist";
@@ -48,6 +50,10 @@ public class QnaBoardController {
 	public String qnaBoardRead(@RequestParam int qnaBno, SearchCondition searchCondition, Model model) {
 		log.info("QnaBoardController() 클래스의 qnaBoardRead() 메소드 호출");
 		try {
+			// 조회수 증가 처리
+			qnaBoardService.riseQnaViewCnt(qnaBno);
+			
+			// 글 조회 및 이전/다음 글 정보 등을 가져옴
 	        QnaBoard qnaBoard = qnaBoardService.getQnaBoard(qnaBno);
 	        Integer prevQnaBno = qnaBoardService.prevQnaBno(searchCondition, qnaBno);
 	        Integer nextQnaBno = qnaBoardService.nextQnaBno(searchCondition, qnaBno);
@@ -107,4 +113,5 @@ public class QnaBoardController {
 		rattr.addFlashAttribute("pageNum", pageNum);
 		return "redirect:/qnaboard/list?pageNum="+pageNum;
 	}
+	
 }

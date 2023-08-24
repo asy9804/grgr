@@ -73,13 +73,13 @@
 	</select>
 	
 	<!-- 이전 글 번호 찾기 -->
-	<select id="selectPrevInfoBno" resultType="Integer">
+	<select id="selectPrevQnaBno" resultType="Integer">
 		select max(qna_bno)
 		from qna_board where qna_bno &lt; #{qnaBno} and qna_blindstate = 1
 	</select>
 
 	<!-- 다음 글 번호 찾기 -->
-	<select id="selectNextInfoBno" resultType="Integer">
+	<select id="selectNextQnaBno" resultType="Integer">
 		select min(qna_bno)
 		from qna_board where qna_bno &gt; #{qnaBno} and qna_blindstate = 1
 	</select>

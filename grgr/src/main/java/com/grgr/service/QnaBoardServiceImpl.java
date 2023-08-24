@@ -49,8 +49,19 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	}
 
 	@Override
-	public void riseQnaViewCnt(int qnaBno) {
-		qnaBoardDAO.increaseQnaViewCnt(qnaBno);
+	public int riseQnaViewCnt(int qnaBno) {
+		/*
+		 // 게시글 조회 및 조회수 증가 로직
+	    QnaBoard qnaBoard = qnaBoardDAO.selectQnaBoard(qnaBno); // 게시글 조회
+	    int currentViewCnt = qnaBoard.getQnaViewCnt(); // 현재 조회수
+	    int updatedViewCnt = currentViewCnt + 1; // 증가된 조회수
+	    qnaBoard.setQnaViewCnt(updatedViewCnt); // 조회수 업데이트
+	    qnaBoardDAO.updateQnaBoard(qnaBoard); // 게시글 업데이트
+
+	    return updatedViewCnt;
+	    */
+		
+		return qnaBoardDAO.increaseQnaViewCnt(qnaBno);
 	}
 	
 	@Override
