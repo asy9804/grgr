@@ -17,10 +17,10 @@
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 			<choose>
 				<when test="searchType == 'TC'.toString()">
-					qna_title like '%'||#{keyword}||'%' OR qna_content like '%'||#{keyword}||'%'
+					qna_title like '%'||#{qnaKeyword}||'%' OR qna_content like '%'||#{qnaKeyword}||'%'
 				</when>
 				<when test="searchType == 'T'.toString()">
-					qna_title like '%'||#{keyword}||'%'
+					qna_title like '%'||#{qnaKeyword}||'%'
 				</when>
 				<!-- <when test='searchType == "W"'>
 					writer like '%'||#{keyword}||'%'
