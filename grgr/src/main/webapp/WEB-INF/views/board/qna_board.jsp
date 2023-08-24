@@ -81,13 +81,37 @@
 							class="btn btn-xs btn-primary pill"
 							style="float: right; font-size: 15px; margin: 10px"><span>삭제</span></a>
 					</c:if>
+					<!-- 
 					<p
 						class="fs-12 post-meta-small p-y-15 pl-15 mb-15 border-secondary"
 						style="clear: both; padding: 10px">
-						<i class="fas fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate }<span
-							class="mr-5 ml-5 text-muted">|</span> <i class="fas fa-user mr-5"></i>${qnaBoard.uno}
+						<i class="fas fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate }
+							<span class="mr-5 ml-5 text-muted">|</span> <i class="fas fa-user mr-5">${qnaBoard.uno}</i>
 						<span class="mr-5 ml-5 text-muted">|</span>
-						<i class="fas fa-tag mr-5"></i>${qnaBoard.qnaKeyword}
+						<i class="fas fa-tag mr-5">${qnaBoard.qnaKeyword}</i>
+						<c:choose>
+							<c:when test="${qnaBoard.qnaKeyword=='all'}">전체</c:when>
+							<c:when test="${qnaBoard.qnaKeyword=='ilban'}">일반회원</c:when>
+							<c:when test="${qnaBoard.qnaKeyword=='sangkon'}">상권회원</c:when>
+						</c:choose>
+						<span class="mr-5 ml-5 text-muted">|</span>
+						<i class="fas fa-eye mr-5">${qnaBoard.qnaViewCnt}</i>
+					</p>
+					 -->
+					<p class="fs-12 post-meta-small p-y-15 pl-15 mb-15 border-secondary" 
+						style="clear: both; padding: 10px">
+					    <i class="fas fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate }
+					    <span class="mr-5 ml-5 text-muted">|</span>
+					    <i class="fas fa-user mr-5">${qnaBoard.uno}</i>
+					    <span class="mr-5 ml-5 text-muted">|</span>
+					    <i class="fas fa-tag mr-5">${qnaBoard.qnaKeyword}</i>
+					    <c:choose>
+					        <c:when test="${qnaBoard.qnaKeyword == 'all'}">전체</c:when>
+					        <c:when test="${qnaBoard.qnaKeyword == 'ilban'}">일반회원</c:when>
+					        <c:when test="${qnaBoard.qnaKeyword == 'sangkwon'}">상권회원</c:when>
+					    </c:choose>
+					    <span class="mr-5 ml-5 text-muted">|</span>
+					    <i class="fas fa-user mr-5">${qnaBoard.qnaViewCnt}</i>
 					</p>
 					<p class="m-y-30">${qnaBoard.qnaContent}</p>
 					<a
@@ -101,8 +125,8 @@
 					<ul class="pager">
 						<c:if test="${!isFirstPost }">
 							<li class="pager-left"><a
-								href="<c:url value='/qnaboard/read?${searchCondition.getQueryString()}&qnaBno=${prevQnaBno}'/>"><i
-									class="fas fa-arrow-left"></i> <span class="ml-5">이전글</span></a></li>
+								href="<c:url value='/qnaboard/read?${searchCondition.getQueryString()}&qnaBno=${prevQnaBno}'/>">
+									<i class="fas fa-arrow-left"></i> <span class="ml-5">이전글</span></a></li>
 						</c:if>
 						<c:if test="${isFirstPost }">
 							<li class="pager-left disabled"><i class="fas fa-arrow-left"></i>
@@ -111,8 +135,8 @@
 
 						<c:if test="${!isLastPost}">
 							<li class="pager-right"><a
-								href="<c:url value='/qnaboard/read?${searchCondition.getQueryString()}&qnaBno=${nextQnaBno}'/>"><span
-									class="mr-5">다음글</span> <i class="fas fa-arrow-right"></i></a></li>
+								href="<c:url value='/qnaboard/read?${searchCondition.getQueryString()}&qnaBno=${nextQnaBno}'/>">
+									<span class="mr-5">다음글</span> <i class="fas fa-arrow-right"></i></a></li>
 						</c:if>
 
 						<c:if test="${isLastPost}">

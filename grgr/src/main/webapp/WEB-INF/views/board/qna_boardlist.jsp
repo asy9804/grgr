@@ -100,7 +100,7 @@
 									<button id="search-button"
 										class="btn btn-sm btn-primary lh-0 overlapping-btn big-btn pill"
 										type="button">
-										<i class="fas fa-search mr-5"></i> 검색
+										<i class="fas fa-search mr-5">검색</i>
 									</button>
 								</span>
 								<!-- / input-group-btn -->
@@ -129,28 +129,30 @@
 							data-groups='["${qnaBoard.qnaKeyword}"]'>
 							<a href="<c:url value='/qnaboard/read${pager.searchCondition.getQueryString()}&qnaBno=${qnaBoard.qnaBno}'/>">
 								<!-- &pageNum=${pageNum} -->
+								
 								<div class="promo-box">
 									<div class="cta p-0">
 										<div class="row v-center">
 											<div class="col-lg-2 tablet-lg-top-30 tablet-lg-center">
-												<img
-													src="${pageContext.request.contextPath}/assets/images/placeholder-square.jpg"
-													alt="default-img" class="rounded" />
+											<!-- 사진 제외
+												<img src="${pageContext.request.contextPath}/assets/images/placeholder-square.jpg"
+												alt="default-img" class="rounded" /> --> 
 											</div>
+											
 											<!-- / column -->
 											<div class="col-lg-10 text-left tablet-lg-center">
 												<p class="mb-20">${qnaBoard.qnaTitle}</p>
 												<p class="lead mb-20">${qnaBoard.qnaContent}</p>
+												<p class="lead mb-10">${qnaBoard.qnaViewCnt}</p>
 												<p class="fs-16 post-meta-small mt-15 mb-0"
 													style="text-align: right">
 													<i class="far fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate}<span
-														class="m-x-10 text-muted">|</span> <i
-														class="fas fa-tag mr-10"></i>
+														class="m-x-10 text-muted">|</span> 
+													<i class="fas fa-tag mr-10"></i>
 													<c:choose>
 														<c:when test="${qnaBoard.qnaKeyword=='all'}">전체</c:when>
 														<c:when test="${qnaBoard.qnaKeyword=='ilban'}">일반회원</c:when>
 														<c:when test="${qnaBoard.qnaKeyword=='sangkon'}">상권회원</c:when>
-														<c:otherwise>이벤트</c:otherwise>
 													</c:choose>
 												</p>
 											</div>
@@ -176,7 +178,7 @@
 			<c:choose>
 				<c:when test="${pager.startPage != 1 }">
 					<li class="page-item"><a class="page-link"
-						href="<c:url value="/qnaboardlist?pageNum=${pager.startPage-1}"/>">
+						href="<c:url value='/qnaboard/list${pager.searchCondition.getQueryString(pager.startPage-1)}'/>">
 						<i class="fas fa-arrow-left mb-5"></i></a></li>
 				</c:when>
 				<c:otherwise>
@@ -189,11 +191,11 @@
 				<c:choose>
 					<c:when test="${i == pager.pageNum}">
 						<li class="page-item active"><a class="page-link"
-							href="<c:url value='/qnaboard/list?pageNum=${i}'/>">${i}</a></li>
+							href="<c:url value='/qnaboard/list${pager.searchCondition.getQueryString(i)}'/>">${i}</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="<c:url value='/qnaboard/list?pageNum=${i}'/>">${i}</a></li>
+							href="<c:url value='/qnaboard/list${pager.searchCondition.getQueryString(i)}'/>">${i}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -201,8 +203,8 @@
 			<c:choose>
 				<c:when test="${pager.endPage != pager.totalPage}">
 					<li class="page-item"><a class="page-link"
-						href="<c:url value="/qnaboard/list?pageNum=${pager.endPage+1}"/>"><i
-							class="fas fa-arrow-right mb-5"></i></a></li>
+						href="<c:url value='/qnaboard/list${pager.searchCondition.getQueryString(pager.endPage+1)}'/>">
+							<i class="fas fa-arrow-right mb-5"></i></a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item disabled"><a class="page-link" href="#x"><i
