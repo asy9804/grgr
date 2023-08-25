@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.grgr.dto.InfoBoard;
+import com.grgr.dto.InfoFile;
 
 public interface InfoBoardDAO {
 	int infoBoardCount(Map<String, Object> map);
@@ -17,4 +18,7 @@ public interface InfoBoardDAO {
 	Integer selectPrevInfoBno(Map<String, Object> map);
 	Integer selectNextInfoBno(Map<String, Object> map);
 	List<InfoBoard> selectInfoBoardList(Map<String, Object> map);
+	
+	int insertInfoFile(InfoFile infoFile);
+	List<InfoFile> selectInfoFile(int infoBno);
 }

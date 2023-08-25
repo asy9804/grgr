@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.grgr.dto.InfoBoard;
+import com.grgr.dto.InfoFile;
 import com.grgr.mapper.InfoBoardMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -80,6 +81,16 @@ public class InfoBoardDAOImpl implements InfoBoardDAO{
 	public Integer selectNextInfoBno(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(InfoBoardMapper.class).selectNextInfoBno(map);
+	}
+
+	@Override
+	public int insertInfoFile(InfoFile infoFile) {
+		return sqlSession.getMapper(InfoBoardMapper.class).insertInfoFile(infoFile);
+	}
+
+	@Override
+	public List<InfoFile> selectInfoFile(int infoBno) {
+		return sqlSession.getMapper(InfoBoardMapper.class).selectInfoFile(infoBno);
 	}
 	
 }
