@@ -165,8 +165,5 @@
 		info_file_upload from info_file where info_bno = #{infoBno}
 		order by info_file_no
 	</select>
-	
-
-
 </mapper>
        
