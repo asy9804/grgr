@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="kor">
 
@@ -39,14 +42,16 @@
     <nav class="navbar navbar-expand-lg navbar-light has-sticky-logo main-nav fixed-top">
         <div class="sticky-nav-activate fixed-top"></div>
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt=""></a>
-            <a class="navbar-brand sticky-logo" href="index.html"><img src="assets/images/logo.png" alt=""></a>
+        	<!-- 헤더 로고 -->
+            <a class="navbar-brand" href="main.jsp"><img src="${pageContext.request.contextPath}/assets/images/grgr_logo.png" alt=""></a>
+            <a class="navbar-brand sticky-logo" href="main.jsp"><img src="${pageContext.request.contextPath}/assets/images/grgr_logo.png" alt=""></a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar top-bar"></span>
                 <span class="icon-bar middle-bar"></span>
                 <span class="icon-bar bottom-bar"></span>
                 <span class="sr-only">Toggle navigation</span>
-            </button><!-- / navbar-toggler -->
+            </button>
+            <!-- / navbar-toggler -->
 
             <div class="collapse navbar-collapse" id="navbar-toggle">
                 <ul class="navbar-nav ml-auto">
