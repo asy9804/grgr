@@ -37,4 +37,6 @@ public class InfoBoard {
 	private Date infoRegdate;
 	private Date infoUpdate;
 	
+	private String thumbnail;
+	
 }
