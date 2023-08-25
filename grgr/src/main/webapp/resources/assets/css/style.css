@@ -4934,7 +4934,7 @@ label.btn-file {
 
 .navbar-brand img {
   width: auto;
-  max-height: 18px;
+  max-height: 100px;
   vertical-align: baseline;
 }
 
