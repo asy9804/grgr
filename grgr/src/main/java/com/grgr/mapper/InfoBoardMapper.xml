@@ -19,11 +19,13 @@
 			</choose>
 		</trim>
 	</sql>
+	
 	<!-- 총게시글 수 -->
 	<select id="infoBoardCount" resultType="int">
-		SELECT COUNT(*) FROM INFO_BOARD where <if test='keyword!=null and keyword != ""'><include refid="search"></include></if>
-		info_Loc='강남구' and info_blindstate=1
-
+		SELECT COUNT(*) FROM INFO_BOARD where <include refid="search"/>
+		info_Loc='강남구' and info_blindstate=1 
+		<if test="infoKeyword != null and infoKeyword != ''">
+    	and info_keyword = #{infoKeyword}</if>
 	</select>
 
 	<!--게시글 입력(삽입) -->
@@ -81,15 +83,19 @@
 	<!-- 이전 글 번호 찾기 -->
 	<select id="selectPrevInfoBno" resultType="int">
 		select max(INFO_BNO)
-		from info_board where <if test='keyword!=null and keyword != ""'><include refid="search"/></if> 
+		from info_board where <include refid="search"/> 
 		info_Loc='강남구' and info_bno &lt; #{infoBno} and info_blindstate = 1
-	</select> 
+		<if test="infoKeyword != null and infoKeyword != ''">
+    	and info_keyword = #{infoKeyword}</if> 
+	</select>
 
 	<!-- 다음 글 번호 찾기 -->
  	<select id="selectNextInfoBno" resultType="int">
 		select min(INFO_BNO)
-		from info_board where <if test='keyword!=null and keyword != ""'><include refid="search"/></if> 
+		from info_board where <include refid="search"/>
 		info_Loc='강남구' and info_bno &gt; #{infoBno} and info_blindstate = 1
+		<if test="infoKeyword != null and infoKeyword != ''">
+    	and info_keyword = #{infoKeyword}</if> 
 	</select> 
 
 
@@ -107,8 +113,10 @@
 		INFO_UPDATE_UNO
 		FROM
 		INFO_BOARD 
-		WHERE <if test='keyword!=null and keyword != ""'><include refid="search"></include></if>
+		WHERE <include refid="search"/>
 		INFO_LOC = #{infoLoc} AND INFO_BLINDSTATE = 1
+		<if test="infoKeyword != null and infoKeyword != ''">
+    	and info_keyword = #{infoKeyword}</if> 
 		ORDER BY INFO_BNO DESC
 		) INFO
 		)
@@ -142,8 +150,22 @@
 		WHERE info_bno = #{infoBno}
 	</update>
 
-
-
+	<!-- 이미지파일 업로드 : INFO_FILE_UPDATE_UNO 는 로그인 기능 완성시 추가할 것 -->
+	<insert id="insertInfoFile">
+		insert into info_file (info_file_no, info_bno,
+		info_file_origin, info_file_upload)
+		values
+		(info_file_seq.nextval,#{infoBno}, #{infoFileOrigin},
+		#{infoFileUpload})
+	</insert>
+	
+	<!-- 이미지파일 검색 -->
+	<select id="selectInfoFile">
+		select info_file_no, info_bno, info_file_origin,
+		info_file_upload from info_file where info_bno = #{infoBno}
+		order by info_file_no
+	</select>
+	
 
 
 </mapper>

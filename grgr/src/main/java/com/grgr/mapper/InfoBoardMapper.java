@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.grgr.dto.InfoBoard;
+import com.grgr.dto.InfoFile;
 
 public interface InfoBoardMapper {
 	int infoBoardCount(Map<String, Object> map);
@@ -20,5 +21,6 @@ public interface InfoBoardMapper {
 	Integer selectNextInfoBno(Map<String, Object> map);
 	List<InfoBoard> selectInfoBoardList(Map<String, Object> map);
 	
-	
+	int insertInfoFile(InfoFile infoFile);
+	List<InfoFile> selectInfoFile(int infoBno);
 }
