@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TilesController {
 	@RequestMapping("/main")
-	public String tiles() {
+	public String main() {
 		return "main";
 	}
 	
-	@RequestMapping("/tiles1")
-	public String tiles1() {
-		return "main/tiles1";
+	@RequestMapping("/footer")
+	public String footer() {
+		return "footer";
 	}
 	
 	@RequestMapping("/tiles2")
