@@ -4,22 +4,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="kor">
-
 <head>
+
+<style>
+a.navbar-brand img {
+	width: 200px !important;
+	height: 200px !important;
+}
+</style>
+
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Soft UI - Neumorphism Style UI Kit">
     <meta name="author" content="kingstudio.ro">
-    <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.png">
+    
+    <!-- 파비콘 변경 -->
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/images/grgr_favicon.png">
     <!-- Site Title -->
-    <title>Soft UI - Neumorphism Style UI Kit</title>
+    <title>끼리끼리</title>
     <!-- Bootstrap 4 core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Styles -->
-    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/animate.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
@@ -43,8 +51,13 @@
         <div class="sticky-nav-activate fixed-top"></div>
         <div class="container">
         	<!-- 헤더 로고 -->
-            <a class="navbar-brand" href="main.jsp"><img src="${pageContext.request.contextPath}/assets/images/grgr_logo.png" alt=""></a>
-            <a class="navbar-brand sticky-logo" href="main.jsp"><img src="${pageContext.request.contextPath}/assets/images/grgr_logo.png" alt=""></a>
+            <a class="navbar-brand" href="#">
+            	<img src="resources/images/grgr_logo.png" alt=""  width="300" >
+            </a>
+            <!-- 헤더 고정 로고 -->
+            <a class="navbar-brand sticky-logo" href="#">
+            	<img src="resources/images/grgr_logo.png" alt="">
+           	</a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar top-bar"></span>
                 <span class="icon-bar middle-bar"></span>
@@ -53,61 +66,18 @@
             </button>
             <!-- / navbar-toggler -->
 
-            <div class="collapse navbar-collapse" id="navbar-toggle">
+            <div class="collapse navbar-collapse" id="navbar-toggle2">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#x" id="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-archive mr-5 fs-14 va-middle"></i> <span class="va-middle">Components</span></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown">
-                            <a class="dropdown-item" href="components.html#basic"><i class="fas fa-box-open mr-5"></i> <span>Basic Components</span></a>
-                            <a class="dropdown-item" href="components.html#navigation"><i class="fas fa-bars mr-5"></i> <span>Navigation</span></a>
-                            <a class="dropdown-item" href="components.html#forms"><i class="fas fa-file-alt mr-5"></i> <span>Forms</span></a>
-                            <a class="dropdown-item" href="components.html#cards"><i class="far fa-square mr-5"></i> <span>Cards</span></a>
-                            <a class="dropdown-item" href="components.html#extras"><i class="fas fa-heart mr-5"></i> <span>Extras</span></a>
-                        </div><!-- / dropdown-menu -->
-                    </li><!-- / dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#x" id="dropdown-sections" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-stream mr-5 fs-14 va-middle"></i> <span class="va-middle">Sections</span></a>
-                        <div class="dropdown-menu mega-menu two-columns" aria-labelledby="dropdown-sections">
-                            <div class="row">
-                                <div class="col-lg-6 sub-menu">
-                                    <a class="dropdown-item" href="sections.html#headers"><i class="fas fa-window-maximize mr-5"></i> <span>Headers</span></a>
-                                    <a class="dropdown-item" href="sections.html#features"><i class="fas fa-star mr-5"></i> <span>Features</span></a>
-                                    <a class="dropdown-item" href="sections.html#projects"><i class="fas fa-briefcase mr-5"></i> <span>Projects</span></a>
-                                    <a class="dropdown-item" href="sections.html#posts"><i class="fas fa-list-alt mr-5"></i> <span>Posts</span></a>
-                                    <a class="dropdown-item" href="sections.html#teams"><i class="fas fa-users mr-5"></i> <span>Teams</span></a>
-                                </div><!-- / sub-menu -->
-                                <div class="col-lg-6 sub-menu">
-                                    <a class="dropdown-item" href="sections.html#testimonials"><i class="fas fa-smile mr-5"></i> <span>Testimonials</span></a>
-                                    <a class="dropdown-item" href="sections.html#pricing"><i class="fas fa-dollar-sign mr-5"></i> <span>Pricing</span></a>
-                                    <a class="dropdown-item" href="sections.html#products"><i class="fas fa-tags mr-5"></i> <span>Products</span></a>
-                                    <a class="dropdown-item" href="sections.html#contacts"><i class="fas fa-address-card mr-5"></i> <span>Contacts</span></a>
-                                    <a class="dropdown-item" href="sections.html#footers"><i class="fas fa-copyright mr-5"></i> <span>Footers</span></a>
-                                </div><!-- / sub-menu -->
-                            </div><!-- / row -->
-                        </div><!-- / dropdown-menu -->
-                    </li><!-- / dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#x" id="dropdown-templates" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-images mr-5 fs-14 va-middle"></i> <span class="va-middle">Templates</span></a>
-                        <div class="dropdown-menu mega-menu two-columns" aria-labelledby="dropdown-templates">
-                            <div class="row">
-                                <div class="col-lg-6 sub-menu">
-                                    <a class="dropdown-item" href="templates/landing-page.html"><i class="fas fa-images mr-5"></i> <span>Landing Page</span></a>
-                                    <a class="dropdown-item" href="templates/portfolio.html"><i class="fas fa-th-large mr-5"></i> <span>Portfolio</span></a>
-                                    <a class="dropdown-item" href="templates/project.html"><i class="fas fa-briefcase mr-5"></i> <span>Project</span></a>
-                                    <a class="dropdown-item" href="templates/blog.html"><i class="fas fa-list mr-5"></i> <span>Blog</span></a>
-                                    <a class="dropdown-item" href="templates/post.html"><i class="fas fa-pencil-alt mr-5"></i> <span>Post</span></a>
-                                </div><!-- / sub-menu -->
-                                <div class="col-lg-6 sub-menu">
-                                    <a class="dropdown-item" href="templates/ecommerce.html"><i class="fas fa-shopping-cart mr-5"></i> <span>eCommerce</span></a>
-                                    <a class="dropdown-item" href="templates/product.html"><i class="fas fa-tag mr-5"></i> <span>Product</span></a>
-                                    <a class="dropdown-item" href="templates/404.html"><i class="fas fa-unlink mr-5"></i> <span>404 Page</span></a>
-                                    <a class="dropdown-item" href="templates/login-register.html"><i class="fas fa-sign-in-alt mr-5"></i> <span>Sign In</span></a>
-                                    <a class="dropdown-item" href="templates/account.html"><i class="fas fa-user mr-5"></i> <span>Account</span></a>
-                                </div><!-- / sub-menu -->
-                            </div><!-- / row -->
-                        </div><!-- / dropdown-menu -->
-                    </li><!-- / dropdown -->
-                </ul><!-- / navbar-nav -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#x">로그인</a>
+                    </li>
+                     <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#x">회원가입</a>
+                        <!-- / dropdown-menu -->
+                    </li>
+                    <!-- / dropdown -->
+                    <!-- / navbar-nav -->
 
                 <ul class="navbar-button p-0 m-0 ml-30">
                     <li class="nav-item">
@@ -122,11 +92,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="page-title">Soft UI</h1>
-                    <h5 class="mb-30">Neumorphism Style UI Kit</h5>
-                    <p class="lead mb-25">Soft UI is a premium Bootstrap 4 UI Kit, designed and developed with attention to detail. Soft UI Kit includes 500+ reusable components, 50+ pre-built sections and 10 pre-built templates in neumorphism style with light & dark variations.</p>
-                    <a href="#features" class="btn btn-white-gradient m-5 ml-0 smooth-scroll"><i class="fas fa-sun mr-5"></i> <span>Light UI</span></a>
-                    <a href="dark-ui/index.html" class="btn btn-dark-gradient m-5 ml-0"><i class="fas fa-moon mr-5"></i> <span>Dark UI</span></a>
+                    <h1 class="page-title">끼리끼리</h1>
+                    <h5 class="mb-30">우리동네 커뮤니티</h5>
+                    <p class="lead mb-25">동네를 설정하여 많은 사람들과 다양한 정보를 공유할 수 있습니다.</p>
                 </div><!-- column -->
                 <div class="col-md-6">
                 </div><!-- column -->
@@ -135,7 +103,6 @@
     </header>
 
     <div class="main-container">
-
         <div id="features" class="container p-y-150">
             <div class="row">
                 <div class="col-md-6 col-lg-4">
@@ -417,26 +384,10 @@
     </div><!-- / main-container -->
 
     
-
-    <a href="#top" class="scroll-to-top is-hidden smooth-scroll" data-nav-status="toggle"><i class="fas fa-chevron-up"></i></a>
-
-    <footer>
-        <div class="container">
-            <div class="row v-center mobile-center">
-                <div class="col-md-4 footer-left-area tablet-top">
-                    <p>© Soft UI by <a href="https://kingstudio.ro" target="_blank">KingStudio</a></p>
-                </div><!-- / footer-left-area -->
-                <div class="col-md-8 footer-right-area">
-                    <p>
-                        <a href="index.html" class="text-link mr-15">Home</a>
-                        <a href="components.html" class="text-link mr-15">Components</a>
-                        <a href="sections.html" class="text-link mr-15">Sections</a>
-                        <a href="templates.html" class="text-link">Templates</a>
-                    </p>
-                </div><!-- / footer-right-area -->
-            </div><!-- / row -->
-        </div><!-- / container -->
-    </footer>
+	<div id="footer">
+		<tiles:insertAttribute name="footer"/>
+	</div>
+     
 
 <!-- core JavaScript -->
 <script src="assets/js/jquery.min.js"></script>
