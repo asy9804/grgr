@@ -39,61 +39,55 @@
             <section class="big bg-white">
                 <div class="container">
                     <div class="row">
-                    	<!-- 자유 게시판 -->
                         <div class="col-md-2">
 							<div class="card-body text-center">
 								<a href="http://www.naver.com">
-									<img src="${pageContext.request.contextPath}/resources/images/free_logo.png" alt=""
+									<img src="${pageContext.request.contextPath}/resources/images/free_logo.png" alt="자유게시판"
 										style="height: 90px; width: 80px; padding-bottom: 20px;">
 									<h6 class="card-title fw-regular mb-20">자유</h6>
 								</a>
                             </div>
                         </div>
-                    	<!-- 정보공유 게시판 -->
                         <div class="col-md-2">
 							<div class="card-body text-center">
 								<a href="http://www.naver.com">
-									<img src="${pageContext.request.contextPath}/resources/images/info_logo.png" alt=""
+									<img src="${pageContext.request.contextPath}/resources/images/info_logo.png" alt="정보공유게시판"
 										style="height: 90px; width: 80px; padding-bottom: 20px;">
 									<h6 class="card-title fw-regular mb-20">정보공유</h6>
 								</a>
                             </div>
                         </div>
-                        <!-- 판매 게시판 -->
 						<div class="col-md-2">
 							<div class="card-body text-center">
 								<a href="http://www.naver.com">
-									<img src="${pageContext.request.contextPath}/resources/images/sale_logo.png" alt=""
+									<img src="${pageContext.request.contextPath}/resources/images/sale_logo.png" alt="판매게시판"
 										style="height: 90px; width: 80px; padding-bottom: 20px;">
 									<h6 class="card-title fw-regular mb-20">판매</h6>
 								</a>
                             </div>
                         </div>
-                        <!-- 구인구직 게시판 -->
                         <div class="col-md-2">
 							<div class="card-body text-center">
 								<a href="http://www.naver.com">
-									<img src="${pageContext.request.contextPath}/resources/images/job_logo.png" alt=""
+									<img src="${pageContext.request.contextPath}/resources/images/job_logo.png" alt="구인구직게시판"
 										style="height: 90px; width: 80px; padding-bottom: 20px;">
 									<h6 class="card-title fw-regular mb-20">구인/구직</h6>
 								</a>
                             </div>
                         </div>
-                        <!-- 문의 게시판 -->
                         <div class="col-md-2">
 							<div class="card-body text-center">
 								<a href="http://www.naver.com">
-									<img src="${pageContext.request.contextPath}/resources/images/qna_logo.png" alt=""
+									<img src="${pageContext.request.contextPath}/resources/images/qna_logo.png" alt="문의게시판"
 										style="width: 80px; padding-bottom: 10px;">
 									<h6 class="card-title fw-regular mb-20">문의</h6>
 								</a>
                             </div>
                         </div>
-                        <!-- / column -->
                         <div class="col-md-2">
 							<div class="card-body text-center">
 								<a href="http://www.naver.com">
-									<img src="${pageContext.request.contextPath}/resources/images/notice_logo.png" alt=""
+									<img src="${pageContext.request.contextPath}/resources/images/notice_logo.png" alt="공지게시판"
 										style="width: 80px; padding-bottom: 10px;">
 									<h6 class="card-title fw-regular mb-20">공지</h6>
 								</a>
