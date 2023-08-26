@@ -72,10 +72,10 @@
 				</c:if>
 				<form action="modify" method="post" class="validation-inner"
 					id="form-validation" novalidate="novalidate">
-					<input type="hidden" name="uno" value="${infoBoard.uno}" /> 
-					<input type="hidden" name="infoBno" value="${infoBoard.infoBno}" /> 
-					<input type="hidden" name="infoUpdateUno" value="${infoBoard.uno}" /> 
-					<input type="hidden" name="infoLoc" value="강남구" />
+					<input type="hidden" name="uno" value="${infoBoard.uno}" /> <input
+						type="hidden" name="infoBno" value="${infoBoard.infoBno}" /> <input
+						type="hidden" name="infoUpdateUno" value="${infoBoard.uno}" /> <input
+						type="hidden" name="infoLoc" value="강남구" />
 					<div class="row">
 						<div class="col-md-3">
 							<div class="col-md-0 tablet-top">
@@ -125,7 +125,7 @@
 							<div class="form-group">
 								<input type="text" class="form-control" id="contact-email"
 									name="infoTitle" required="true"
-									style="font-family: 'Font Awesome 5 Free', sans-serif !important; font-weight: 400"
+									style="font-family: 'Font Awesome 5 Free', sans-serif !important; font-weight: 400; color: #000;"
 									aria-required="true" value="${infoBoard.infoTitle}">
 							</div>
 							<!-- / form-group -->
@@ -135,25 +135,38 @@
 						<div class="form-group">
 							<textarea id="contact-message" class="form-control"
 								name="infoContent" rows="8" required="true"
-								style="font-family: 'Font Awesome 5 Free', sans-serif !important; font-weight: 400; min-height: 500px; max-height: 500px;"
+								style="font-family: 'Font Awesome 5 Free', sans-serif !important; font-weight: 400; min-height: 500px; max-height: 500px; color: #000;"
 								aria-required="true">${infoBoard.infoContent}</textarea>
+							<c:forEach var="file" items="${infoFiles}">
+								<img src="<c:url value="/upload/${file.infoFileUpload}"/>"
+									alt="${file.infoFileOrigin }" width="10">
+							</c:forEach>
 						</div>
 
-						<div class="col-md-2 text-center">사진첨부</div>
-
-						<div class="col-md-6">
-							<img
-								src="${pageContext.request.contextPath}/assets/images/placeholder-wide.jpg"
-								alt="default-img" class="rounded">
-						</div>
 						<!-- / form-group -->
 					</div>
 					<!-- / column -->
-
-					<div class="fas mr-10 float-end">
-						<button type="submit" class="btn btn-primary-gradient btn-submit">수정</button>
+					<!-- 사진업로드 버튼 -->
+					<div>
+						<input type="file" name="files" multiple="multiple"
+							accept="image/*" id="file-button" style="display: none;">
+						<div class="btn btn-instagram m-y-10 mr-10"
+							onclick="document.getElementById('file-button').click()">
+							<span class="mr-5"><i class="fab fa-instagram"></i></span> <span>사진업로드</span>
+							<%-- <span id="upload-error-message" style="color: red;">${message}</span></div> --%>
+						</div>
 
 					</div>
+					<!-- 글 목록/ 수정 버튼 -->
+					<div style="text-align: right;">
+						<a
+							href="<c:url value='/infoboard/list${searchCondition.getQueryString()}'/>"
+							target="_blank">
+							<button type="button" class="btn btn-primary-gradient">글목록</button>
+						</a>
+						<button type="submit" class="btn btn-primary-gradient">수정</button>
+					</div>
+
 				</form>
 				<!-- / form-group -->
 			</div>
@@ -251,4 +264,3 @@
 	<!-- / portfolio script -->
 </body>
 </html>
-
