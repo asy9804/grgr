@@ -4,7 +4,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%> 
 <!DOCTYPE html>
 <html lang="kor">
-<body>
+<body style="background-color: white">
 	 <div id="preloader">
         <div class="preloader">
             <span></span>
@@ -19,58 +19,134 @@
 	<div id="header">
 		<tiles:insertAttribute name="header"/>
 	</div>
+	
+	<!-- 배너 이미지 -->
+	<section class="big bg-white">
+        <div class="container">
+            <div class="col-md-12 bg-img box-bg-image tablet-top-30 rounded raised">
+                <div class="row">
+                    <div class="col-md-12 bg-img box-bg-image tablet-top-30 rounded raised" style="background-image: url(${pageContext.request.contextPath}/resources/images/vanner1.jpg); min-height:360px"><p class="mb-0"></p>
+                    </div>
+                    
+                    
+                </div><!-- / row -->
+            </div><!-- box-w-image -->
+        </div><!-- / container -->
+    </section>
+	
+	<!-- 메인 카테고리 -->
+    <div class="main-container" style="background-color: white">
+            <section class="big bg-white">
+                <div class="container">
+                    <div class="row">
+                    	<!-- 자유 게시판 -->
+                        <div class="col-md-2">
+							<div class="card-body text-center">
+								<img src="${pageContext.request.contextPath}/resources/images/free_logo.png" alt=""
+									style="height: 90px; width: 80px; padding-bottom: 20px;">
+								<h6 class="card-title fw-regular mb-20">자유</h6>
+                            </div>
+                        </div>
+                    	<!-- 정보공유 게시판 -->
+                        <div class="col-md-2">
+							<div class="card-body text-center">
+								<img src="${pageContext.request.contextPath}/resources/images/info_logo.png" alt=""
+									style="height: 90px; width: 80px; padding-bottom: 20px;">
+								<h6 class="card-title fw-regular mb-20">정보공유</h6>
+                            </div>
+                        </div>
+                        <!-- 판매 게시판 -->
+						<div class="col-md-2">
+							<div class="card-body text-center">
+								<img src="${pageContext.request.contextPath}/resources/images/sale_logo.png" alt=""
+									style="height: 90px; width: 80px; padding-bottom: 20px;">
+								<h6 class="card-title fw-regular mb-20">판매</h6>
+                            </div>
+                        </div>
+                        <!-- 구인구직 게시판 -->
+                        <div class="col-md-2">
+							<div class="card-body text-center">
+								<img src="${pageContext.request.contextPath}/resources/images/job_logo.png" alt=""
+									style="height: 90px; width: 80px; padding-bottom: 20px;">
+								<h6 class="card-title fw-regular mb-20">구인/구직</h6>
+                            </div>
+                        </div>
+                        <!-- 문의 게시판 -->
+                        <div class="col-md-2">
+							<div class="card-body text-center">
+								<img src="${pageContext.request.contextPath}/resources/images/qna_logo.png" alt=""
+									style="width: 80px; padding-bottom: 10px;">
+								<h6 class="card-title fw-regular mb-20">문의</h6>
+                            </div>
+                        </div>
+                        <!-- / column -->
+                        <div class="col-md-2">
+							<div class="card-body text-center">
+								<img src="${pageContext.request.contextPath}/resources/images/notice_logo.png" alt=""
+									style="width: 80px; padding-bottom: 10px;">
+								<h6 class="card-title fw-regular mb-20">공지</h6>
+                            </div>
+                        </div>
+                        <!-- / column -->
+                    </div>
+                    <!-- / row -->
+                </div>
+                <!-- / container -->
+            </section>
+            
 
-    <div class="main-container">
-        <div id="features" class="container p-y-150">
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="promo-box text-center tablet-lg-top-30 rounded-10 blur d-block">
-                        <i class="fas fa-expand-alt promo-icon d-block mb-25 text-primary"></i>
-                        <h6 class="box-title mb-15">Responsive</h6>
-                        <p class="box-description lead mb-0">Looks great on all screen-sizes.</p>
-                    </div><!-- / promo-box -->
-                </div><!-- / column -->
+            <section class="lg">
+                <div class="container">
+                    <div class="section-title-area text-center relative z-index-1 mb-70">
+                        <h3 class="section-title">Executive Team</h3>
+                        <h5 class="section-sub-title">Get in touch</h5>
+                    </div><!-- / section-title-area -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img class="mb-30 rounded w-60 raised-sm" src="assets/images/placeholder-square.jpg" alt="">
+                                    <p class="mb-5 fs-10 secondary-font text-black">Manager</p>
+                                    <h6 class="card-title fw-bold mb-10 text-primary">Jacob Ginnish</h6>
+                                    <p class="card-text mb-30">Suspendisse in orci vitae sapien semper posuere mauris at imperdiet.</p>
+                                    <p class="mb-0">
+                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-phone fa-rotate-90 mr-5"></span> <span>Call Now</span></a>
+                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-envelope mr-5"></span> <span>Send Email</span></a></p>
+                                </div><!-- / card-body -->
+                            </div><!-- / card -->
+                        </div><!-- / column -->
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="promo-box text-center tablet-lg-top-30 rounded-10 blur d-block">
-                        <i class="fas fa-globe promo-icon d-block mb-25 text-primary"></i>
-                        <h6 class="box-title mb-15">Cross Browser</h6>
-                        <p class="box-description lead mb-0">Works on all modern web-browsers.</p>
-                    </div><!-- / promo-box -->
-                </div><!-- / column -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img class="mb-30 rounded w-60 raised-sm" src="assets/images/placeholder-square.jpg" alt="">
+                                    <p class="mb-5 fs-10 secondary-font text-black">Designer</p>
+                                    <h6 class="card-title fw-bold mb-10 text-primary">Merida Swan</h6>
+                                    <p class="card-text mb-30">Suspendisse in orci vitae sapien semper posuere mauris at imperdiet.</p>
+                                    <p class="mb-0">
+                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-phone fa-rotate-90 mr-5"></span> <span>Call Now</span></a>
+                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-envelope mr-5"></span> <span>Send Email</span></a></p>
+                                </div><!-- / card-body -->
+                            </div><!-- / card -->
+                        </div><!-- / column -->
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="promo-box text-center rounded-10 blur d-block">
-                        <i class="fas fa-file-code promo-icon d-block mb-25 text-primary"></i>
-                        <h6 class="box-title mb-15">Valid HTML</h6>
-                        <p class="box-description lead mb-0">100% valid HTML code.</p>
-                    </div><!-- / promo-box -->
-                </div><!-- / column -->
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="promo-box text-center mb-0 tablet-lg-top-30 rounded-10 blur d-block">
-                        <i class="fas fa-pencil-ruler promo-icon d-block mb-25 text-primary"></i>
-                        <h6 class="box-title mb-15">Easy to Customize</h6>
-                        <p class="box-description lead mb-0">Fast and easy to customize any element.</p>
-                    </div><!-- / promo-box -->
-                </div><!-- / column -->
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="promo-box text-center mb-0 tablet-lg-top-30 rounded-10 blur d-block">
-                        <i class="fab fa-sass promo-icon d-block mb-25 text-primary"></i>
-                        <h6 class="box-title mb-15">Sass Files</h6>
-                        <p class="box-description lead mb-0">Sass files are included in theme.</p>
-                    </div><!-- / promo-box -->
-                </div><!-- / column -->
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="promo-box text-center mb-0 rounded-10 blur d-block">
-                        <i class="fas fa-life-ring promo-icon d-block mb-25 text-primary"></i>
-                        <h6 class="box-title mb-15">24/7 Support</h6>
-                        <p class="box-description lead mb-0">Fast and friendly Support.</p>
-                    </div><!-- / promo-box -->
-                </div><!-- / column -->
-            </div><!-- / row -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img class="mb-30 rounded w-60 raised-sm" src="assets/images/placeholder-square.jpg" alt="">
+                                    <p class="mb-5 fs-10 secondary-font text-black">Developer</p>
+                                    <h6 class="card-title fw-bold mb-10 text-primary">Larry Lin</h6>
+                                    <p class="card-text mb-30">Suspendisse in orci vitae sapien semper posuere mauris at imperdiet.</p>
+                                    <p class="mb-0">
+                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-phone fa-rotate-90 mr-5"></span> <span>Call Now</span></a>
+                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-envelope mr-5"></span> <span>Send Email</span></a></p>
+                                </div><!-- / card-body -->
+                            </div><!-- / card -->
+                        </div><!-- / column -->
+                    </div><!-- / row -->
+                </div><!-- / container -->
+            </section>
+        </div>
         </div><!-- / container -->
 
         <section id="main-features" class="pt-150 pb-0 bg-img img-bottom" style="background-image: url(assets/images/placeholder.jpg)">
