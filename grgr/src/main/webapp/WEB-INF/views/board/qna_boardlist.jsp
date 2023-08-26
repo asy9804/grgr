@@ -13,9 +13,9 @@
 <meta name="description" content="Soft UI - Neumorphism Style UI Kit" />
 <meta name="author" content="kingstudio.ro" />
 <!-- Favicon -->
-<link rel="icon"
-	href="${pageContext.request.contextPath}/assets/images/favicon.png" />
+<link rel="icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" />
 <!-- Site Title -->
+<p>Soft UI - Neumorphism Style UI Kit</p>
 <title>Soft UI - Neumorphism Style UI Kit</title>
 <!-- Bootstrap 4 core CSS -->
 <link
@@ -96,7 +96,7 @@
 							<!-- / column -->
 							<div class="input-group input-w-overlap-btn mb-0">
 								<input type="text" class="form-control pill" name="keyword"
-									placeholder="검색어를 입력하세요." value="${pager.searchCondition.keyword }"/> <span class="input-group-btn">
+									placeholder="검색어를 입력하세요." value="${pager.searchCondition.keyword }"/><span class="input-group-btn">
 									<button id="search-button"
 										class="btn btn-sm btn-primary lh-0 overlapping-btn big-btn pill"
 										type="button">
@@ -146,13 +146,12 @@
 												<p class="lead mb-10">${qnaBoard.qnaViewCnt}</p>
 												<p class="fs-16 post-meta-small mt-15 mb-0"
 													style="text-align: right">
-													<i class="far fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate}<span
-														class="m-x-10 text-muted">|</span> 
+													<i class="far fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate}
+														<span class="m-x-10 text-muted">|</span> 
 													<i class="fas fa-tag mr-10"></i>
 													<c:choose>
-														<c:when test="${qnaBoard.qnaKeyword=='all'}">전체</c:when>
-														<c:when test="${qnaBoard.qnaKeyword=='ilban'}">일반회원</c:when>
-														<c:when test="${qnaBoard.qnaKeyword=='sangkon'}">상권회원</c:when>
+														<c:when test="${qnaBoard.qnaKeyword == 'ilban'}">일반회원</c:when>
+														<c:when test="${qnaBoard.qnaKeyword == 'sangkwon'}">상권회원</c:when>
 													</c:choose>
 												</p>
 											</div>
