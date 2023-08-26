@@ -7,7 +7,7 @@ import com.grgr.util.SearchCondition;
 
 public interface QnaBoardService {
 	int getQnaCount(SearchCondition searchCondition);
-	void addQnaBoard(QnaBoard qnaBoard);
+	int addQnaBoard(QnaBoard qnaBoard);
 	void modifyQnaBoard(QnaBoard qnaBoard);
 	void removeQnaBoard(int qnaBno, int uno);
 	int riseQnaViewCnt(int qnaBno);

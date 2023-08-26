@@ -1,13 +1,19 @@
 package com.grgr.service;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.grgr.dao.QnaBoardDAO;
+import com.grgr.dto.InfoFile;
 import com.grgr.dto.QnaBoard;
+import com.grgr.exception.FileUploadFailException;
+import com.grgr.exception.WriteNullException;
 import com.grgr.util.Pager;
 import com.grgr.util.SearchCondition;
 
@@ -25,17 +31,25 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 			if (searchCondition.getSearchType() != null && !searchCondition.getSearchType().isEmpty()) {
 				searchMap.put("searchType", searchCondition.getSearchType());
 			}
-			if (searchCondition.getKeyword() != null && !searchCondition.getKeyword().isEmpty()) {
-				searchMap.put("keyword", searchCondition.getKeyword());
+			if (searchCondition.getSearchKeyword() != null && !searchCondition.getSearchKeyword().isEmpty()) {
+				searchMap.put("searchKeyword", searchCondition.getSearchKeyword());
 			}
 		}
 		
+		if (searchCondition.getKeyword() != null && !searchCondition.getKeyword().trim().isEmpty()) {
+		    searchMap.put("qnaKeyword", searchCondition.getKeyword().trim());
+		}
 		return qnaBoardDAO.qnaBoardCount(searchMap);
 	}
 
 	@Override
-	public void addQnaBoard(QnaBoard qnaBoard) {
+	public int addQnaBoard(QnaBoard qnaBoard) {
+		if (qnaBoard.getQnaTitle() == null || qnaBoard.getQnaContent() == null) {
+	        throw new WriteNullException("제목 또는 내용이 비어있습니다.");
+	    }
 		qnaBoardDAO.insertQnaBoard(qnaBoard);
+		
+		return qnaBoard.getQnaBno();
 	}
 
 	@Override
@@ -50,17 +64,6 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 
 	@Override
 	public int riseQnaViewCnt(int qnaBno) {
-		/*
-		 // 게시글 조회 및 조회수 증가 로직
-	    QnaBoard qnaBoard = qnaBoardDAO.selectQnaBoard(qnaBno); // 게시글 조회
-	    int currentViewCnt = qnaBoard.getQnaViewCnt(); // 현재 조회수
-	    int updatedViewCnt = currentViewCnt + 1; // 증가된 조회수
-	    qnaBoard.setQnaViewCnt(updatedViewCnt); // 조회수 업데이트
-	    qnaBoardDAO.updateQnaBoard(qnaBoard); // 게시글 업데이트
-
-	    return updatedViewCnt;
-	    */
-		
 		return qnaBoardDAO.increaseQnaViewCnt(qnaBno);
 	}
 	
@@ -69,6 +72,34 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 		return qnaBoardDAO.selectQnaBoard(qnaBno);
 	}
 
+	@Override
+	public Map<String, Object> getQnaBoardList(SearchCondition searchCondition) {
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		if (searchCondition != null) {
+			if (searchCondition.getSearchType() != null && !searchCondition.getSearchType().isEmpty()) {
+				searchMap.put("searchType", searchCondition.getSearchType());
+			}
+			if (searchCondition.getKeyword() != null && !searchCondition.getKeyword().isEmpty()) {
+				searchMap.put("keyword", searchCondition.getKeyword());
+			}
+		}
+		int totalBoard = qnaBoardDAO.qnaBoardCount(searchMap);
+		
+		Pager pager = new Pager(totalBoard, searchCondition);
+		// 페이징 계산
+		searchMap.put("startRow", pager.getStartRow());
+		searchMap.put("endRow", pager.getEndRow());
+
+		List<QnaBoard> qnaBoardList = qnaBoardDAO.selectQnaBoardList(searchMap);
+
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("qnaBoardList", qnaBoardList);
+		resultMap.put("pager", pager); // pager 객체를 반환
+		resultMap.put("searchMap", searchMap);
+
+		return resultMap;
+	}
+	
 	@Override
 	public Integer prevQnaBno(SearchCondition searchCondition, int qnaBno) {
 		Map<String, Object> searchMap = new HashMap<String, Object>();
@@ -80,7 +111,6 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 				searchMap.put("keyword", searchCondition.getKeyword());
 			}
 		}
-		
 		searchMap.put("qnaBno", qnaBno);
 		
 		return qnaBoardDAO.selectPrevQnaBno(searchMap);
@@ -96,41 +126,9 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 			if (searchCondition.getKeyword() != null && !searchCondition.getKeyword().isEmpty()) {
 				searchMap.put("keyword", searchCondition.getKeyword());
 			}
-		}
-		
+		}		
 		searchMap.put("qnaBno", qnaBno);
 
 		return qnaBoardDAO.selectNextQnaBno(searchMap);
-	}
-
-	@Override
-	public Map<String, Object> getQnaBoardList(SearchCondition searchCondition) {
-		Map<String, Object> searchMap = new HashMap<String, Object>();
-		if (searchCondition != null) {
-			if (searchCondition.getSearchType() != null && !searchCondition.getSearchType().isEmpty()) {
-				searchMap.put("searchType", searchCondition.getSearchType());
-			}
-			if (searchCondition.getKeyword() != null && !searchCondition.getKeyword().isEmpty()) {
-				searchMap.put("keyword", searchCondition.getKeyword());
-			}
-		}
-
-		int totalBoard = qnaBoardDAO.qnaBoardCount(searchMap);
-		//
-		Pager pager = new Pager(totalBoard, searchCondition);
-		// 페이징 계산
-		searchMap.put("startRow", pager.getStartRow());
-		searchMap.put("endRow", pager.getEndRow());
-
-		List<QnaBoard> qnaBoardList = qnaBoardDAO.selectQnaBoardList(searchMap);
-
-		Map<String, Object> resultMap = new HashMap<String, Object>();
-		resultMap.put("qnaBoardList", qnaBoardList);
-		resultMap.put("pager", pager); // pager 객체를 반환
-		resultMap.put("searchMap", searchMap);
-
-		return resultMap;
-	}
-
-		
+	}		
 }

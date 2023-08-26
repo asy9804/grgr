@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.grgr.mapper.QnaBoardMapper">
-	
-	<!-- 게시글 페이지 검색 >> infoboard 참고하여 하기 구문으로 변경
-	<select id="selectQnaBoard" resultType="QnaBoard">
-		select qna_bno, uno, qna_keyword, qna_title, qna_content from qna_board 
-		where qna_blindstate=1
-			and (qna_title like '%'||#{qna_title}||'%' 
-				or qna_content like '%'||#{qna_content}||'%')
-	</select>
-	 -->
-	
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">	
+<mapper namespace="com.grgr.mapper.QnaBoardMapper">	
 	<!-- 검색 조건문 -->
 	<!-- TC:제목+내용, T: 제목, W: 작성자, -->
 	<sql id="search">
@@ -56,9 +46,9 @@
 		where qna_bno=#{qnaBno}
 	</delete>
 	 
-	<!-- 총게시글 수 -->
+	<!-- 총 게시글 수 -->
 	<select id="qnaBoardCount" resultType="int">
-		select count(*) from qna_board where <if test='keyword!=null and keyword != ""'><include refid="search"></include></if>
+		select count(*) from qna_board where <if test="keyword!=null and keyword != ''"><include refid="search"></include></if>
 		qna_blindstate=1
 
 	</select>
@@ -83,29 +73,25 @@
 		select min(qna_bno)
 		from qna_board where qna_bno &gt; #{qnaBno} and qna_blindstate = 1
 	</select>
-	
-	<!-- 총 게시글 개수 검색 
-	<select id="selectQnaBoardCount" resultType="int">
-		select count(*) 
-		from qna_board
-	</select>
-	-->
-	
-	<!-- 게시글 목록 검색 -->
+	 
+	<!-- 게시글 목록 -->
 	<select id="selectQnaBoardList" resultType="QnaBoard">
 		select * 
-		from (select ROWNUM rn, board.* 
+		from (select rownum rn, board.* 
 			from(select qna_bno, uno, qna_keyword as qnaKeyword, qna_title, qna_content, qna_view_cnt 	
 				, qna_blindstate, qna_regdate, qna_modifydate, qna_update_uno 
-				from qna_board 
-				where qna_blindstate=1 
-					and (qna_title like '%'||#{qnaTitle}||'%'
-						or qna_content like '%'||#{qnaContent}||'%') 
-				order by qna_bno) 
+			from qna_board 
+			where qna_blindstate=1
+				<if test="qnaKeyword != null and qnaKeyword != ''">
+				and qna_keyword=#{qnaKeyword}
+				</if>
+				and ((qna_title like '%'||#{qnaTitle}||'%')
+					or (qna_content like '%'||#{qnaContent}||'%'))
+			order by qna_bno desc)
 			board)
 		 where rn between #{startRow} and #{endRow}
 	</select>
-	
+
 	<!-- 조회수 증가 -->
 	<update id="increaseQnaViewCnt">
 		update qna_board set qna_view_cnt = qna_view_cnt+1
