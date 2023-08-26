@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="en">
 <head>
 <!-- Meta -->
 <meta charset="utf-8" />
@@ -49,6 +49,9 @@
 	font-size: 2rem;
 	font-weight: 'bold';
 }
+.board-images{
+	width: 100px;
+}
 </style>
 <body>
 	<div id="preloader">
@@ -69,34 +72,44 @@
 					<a href="#x"
 						class="d-inline title-color primary-hover fs-24 fw-bold mb-15"
 						style="margin: 10px">${infoBoard.infoTitle} </a>
- 					<c:if test="${infoBoard.uno==2 }">
+					<c:if test="${infoBoard.uno==2 }">
 						<a
-							href="<c:url value='/infoboard/modify?infoBno=${infoBoard.infoBno}'/>"
+							href="<c:url value='/infoboard/modify${searchCondition.getQueryString(1)}&infoBno=${infoBoard.infoBno}'/>"
 							class="btn btn-xs btn-primary pill"
 							style="float: right; font-size: 15px; margin: 10px"><span>수정</span></a>
 					</c:if>
 					<c:if test="${infoBoard.uno==2 }">
 						<a
-							href="<c:url value='/infoboard/remove?infoBno=${infoBoard.infoBno}&uno=${infoBoard.uno}&pageNum=${searchpageNum }'/>"
+							href="<c:url value='/infoboard/remove?infoBno=${infoBoard.infoBno}'/>"
 							class="btn btn-xs btn-primary pill"
 							style="float: right; font-size: 15px; margin: 10px"><span>삭제</span></a>
 					</c:if>
 					<p
 						class="fs-12 post-meta-small p-y-15 pl-15 mb-15 border-secondary"
 						style="clear: both; padding: 10px">
+
 						<i class="fas fa-calendar-alt mr-5"></i>${infoBoard.infoRegdate }<span
 							class="mr-5 ml-5 text-muted">|</span> <i class="fas fa-user mr-5"></i>${infoBoard.uno }
 						<span class="mr-5 ml-5 text-muted">|</span> <i
 							class="fas fa-tag mr-5"></i>${infoBoard.infoKeyword }
 					</p>
+					
 					<p class="m-y-30">${infoBoard.infoContent}</p>
+					<c:forEach var="file" items="${infoFiles}">
+							<%-- <img src="${pageContext.request.contextPath}/resources/upload/${file.infoFileUpload}" --%>
+							<img src="<c:url value="/upload/${file.infoFileUpload}"/>"
+								 alt="${file.infoFileOrigin }"
+								 class="board-images"
+								width="50">
+						</c:forEach>
 					<a
 						href="<c:url value='/infoboard/list${searchCondition.getQueryString(1)}' />"
 						class="btn btn-xs btn-primary pill"
 						style="float: right; font-size: 15px"><span>글목록</span></a>
 				</div>
 				<!-- / column -->
-- 				<!-- 이전글, 다음글 -->
+			
+				<!-- 이전글, 다음글 -->
 				<nav aria-label="pager" style="clear: both; padding-top: 30px">
 					<ul class="pager">
 						<c:if test="${!isFirstPost }">
@@ -120,7 +133,7 @@
 								<i class="fas fa-arrow-right"></i></li>
 						</c:if>
 					</ul>
-				</nav> 
+				</nav>
 			</div>
 		</div>
 	</section>
@@ -188,35 +201,35 @@
 		src="${pageContext.request.contextPath}/assets/js/jquery.shuffle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/portfolio.js"></script>
 	<script>
-	$(document).ready(function() {
-	    if (Modernizr.touch) {
-	        // show the close overlay button
-	        $('.close-overlay').removeClass('hidden');
-	        // handle the adding of hover class when clicked
-	        $('.img').click(function(e) {
-	            if (!$(this).hasClass('hover')) {
-	                $(this).addClass('hover');
-	            }
-	        });
-	        // handle the closing of the overlay
-	        $('.close-overlay').click(function(e) {
-	            e.preventDefault();
-	            e.stopPropagation();
-	            if ($(this).closest('.img').hasClass('hover')) {
-	                $(this).closest('.img').removeClass('hover');
-	            }
-	        });
-	    } else {
-	        // handle the mouseenter functionality
-	        $('.img').mouseenter(function() {
-	            $(this).addClass('hover');
-	        })
-	        // handle the mouseleave functionality
-	        .mouseleave(function() { // 추가된 부분
-	            $(this).removeClass('hover');
-	        }); // 추가된 부분
-	    }
-	});
+		$(document).ready(function() {
+			if (Modernizr.touch) {
+				// show the close overlay button
+				$('.close-overlay').removeClass('hidden');
+				// handle the adding of hover class when clicked
+				$('.img').click(function(e) {
+					if (!$(this).hasClass('hover')) {
+						$(this).addClass('hover');
+					}
+				});
+				// handle the closing of the overlay
+				$('.close-overlay').click(function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					if ($(this).closest('.img').hasClass('hover')) {
+						$(this).closest('.img').removeClass('hover');
+					}
+				});
+			} else {
+				// handle the mouseenter functionality
+				$('.img').mouseenter(function() {
+					$(this).addClass('hover');
+				})
+				// handle the mouseleave functionality
+				.mouseleave(function() { // 추가된 부분
+					$(this).removeClass('hover');
+				}); // 추가된 부분
+			}
+		});
 	</script>
 	<!-- / portfolio script -->
 </body>

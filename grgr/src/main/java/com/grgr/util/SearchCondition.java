@@ -10,30 +10,43 @@ public class SearchCondition {
 	private Integer pageSize = 10;
 	private Integer blockSize = 10;
 	private String searchType ="";
-	private String keyword = "";
+	private String searchKeyword = "";
+	private String keyword="";
 	
 	public SearchCondition() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public SearchCondition(Integer pageNum, Integer pageSize, String searchType, String keyword) {
+
+	public SearchCondition(Integer pageNum, Integer pageSize, String searchType, String searchKeyword, String keyword) {
 		super();
 		this.pageNum = pageNum;
 		this.pageSize = pageSize;
 		this.searchType = searchType;
+		this.searchKeyword = searchKeyword;
 		this.keyword = keyword;
 	}
 	
 	public String getQueryString(int pageNum) {
-		
-		return UriComponentsBuilder.newInstance()
-				.queryParam("pageNum", pageNum)
-				.queryParam("pageSize", pageSize)
-				.queryParam("searchType", searchType)
-				.queryParam("keyword", keyword).build().toUriString();
+	    UriComponentsBuilder builder = UriComponentsBuilder.newInstance()
+	            .queryParam("pageNum", pageNum)
+	            .queryParam("pageSize", pageSize);
+
+	    if (searchType != null && !searchType.trim().isEmpty()) {
+	        builder.queryParam("searchType", searchType);
+	    }
+	    if (searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+	        builder.queryParam("searchKeyword", searchKeyword);
+	    }
+	    if (keyword != null && !keyword.trim().isEmpty()) {
+	        builder.queryParam("keyword", keyword);
+	    }
+
+	    return builder.build().toUriString();
 	}
 	
 	public String getQueryString() {
+		
 		return getQueryString(pageNum);
+		
 	}
 }
