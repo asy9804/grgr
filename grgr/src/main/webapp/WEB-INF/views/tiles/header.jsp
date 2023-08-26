@@ -32,7 +32,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light absolute top-0 left-0 right-0">
 			<div class="container">
 				<div class="navbar col-lg-1" href="#x">
-					<img src="${pageContext.request.contextPath}/resources/images/grgr_png" alt="">
+					<img src="${pageContext.request.contextPath}/resources/images/grgr_logo.png" alt="">
 				</div>
 				<div class="collapse navbar-collapse col-lg-3" id="navbar-toggle1">
 					<ul class="navbar-nav ml-30">
@@ -67,7 +67,7 @@
 					<li class="nav-item">
 						<a href="#x" class="btn btn-sm btn-primary-gradient pill">
 							<i class="fas fa-rotate-90 fs-12 va-middle mr-5"></i>
-								<span>회원가입</span>
+							<span>회원가입</span>
 						</a>
 					</li>
 				</ul>
