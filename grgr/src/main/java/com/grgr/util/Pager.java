@@ -1,16 +1,14 @@
 package com.grgr.util;
 
-import org.springframework.web.util.UriComponentsBuilder;
-
 import lombok.Data;
 
 //페이징 처리 관련 값을 필드에 저장하기 위한 클래스
 @Data
 public class Pager {
 	//생성자를 이용하여 초기값을 전달받아 필드에 저장
-//	private int pageNum;//요청 페이지의 번호
-//	private int pageSize;//하나의 페이지에 출력될 게시글의 갯수
-//	private int blockSize;//하나의 블럭에 출력될 페이지 번호의 갯수
+	private int pageNum;//요청 페이지의 번호
+	private int pageSize;//하나의 페이지에 출력될 게시글의 갯수
+	private int blockSize;//하나의 블럭에 출력될 페이지 번호의 갯수
 //  keyword, searchType, keyword
 	private SearchCondition searchCondition;
 
