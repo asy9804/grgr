@@ -3,7 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
     <!-- Meta -->
     <meta charset="utf-8">
@@ -28,7 +28,7 @@
 </head>
 <body>
 	
-		<!-- 스크롤 하강 시 위로 가는 버튼 -->
+	<!-- 스크롤 하강 시 위로 가는 버튼 -->
     <a href="#top" class="scroll-to-top smooth-scroll" data-nav-status="toggle"><i class="fas fa-chevron-up"></i></a>
 
 	<footer style="padding-bottom: 0px;">
@@ -97,7 +97,6 @@
 
 			<div class="container text-cente">
 				<p class="widget p-y-10">
-				<span></span>
 				상호명:끼리끼리 · 대표이사:아이티윌 · 개인정보책임관리자:아이티윌 · 주소:서울특별시 강남구 테헤란로 124, 삼원타워 4층
 				사업자등록번호:123-45-67890<br>
 				통신판매업신고증:제 2023-아이티윌-00001 호 · 직업정보제공사업 신고번호:한국청 제 2023-01호
@@ -106,7 +105,6 @@
 				</p>
 			</div>
           </div>
-         <!-- / container -->
      </footer>
      
      <footer style="padding-top: 0px;">	
