@@ -4,103 +4,21 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="kor">
-<head>
-
-<style>
-a.navbar-brand img {
-	width: 200px !important;
-	height: 200px !important;
-}
-</style>
-
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Soft UI - Neumorphism Style UI Kit">
-    <meta name="author" content="kingstudio.ro">
-    
-    <!-- 파비콘 변경 -->
-    <link rel="icon" href="${pageContext.request.contextPath}/resources/images/grgr_favicon.png">
-    <!-- Site Title -->
-    <title>끼리끼리</title>
-    <!-- Bootstrap 4 core CSS -->
-    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
-    <link href="${pageContext.request.contextPath}/assets/css/animate.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
-    <link href="assets/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
-</head>
-
 <body>
-
-    <div id="preloader">
+	 <div id="preloader">
         <div class="preloader">
             <span></span>
             <span></span>
         </div>
     </div>
 
-    <div id="top">
-    </div><!-- / top -->
-
-    <nav class="navbar navbar-expand-lg navbar-light has-sticky-logo main-nav fixed-top">
-        <div class="sticky-nav-activate fixed-top"></div>
-        <div class="container">
-        	<!-- 헤더 로고 -->
-            <a class="navbar-brand" href="#">
-            	<img src="resources/images/grgr_logo.png" alt=""  width="300" >
-            </a>
-            <!-- 헤더 고정 로고 -->
-            <a class="navbar-brand sticky-logo" href="#">
-            	<img src="resources/images/grgr_logo.png" alt="">
-           	</a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="icon-bar top-bar"></span>
-                <span class="icon-bar middle-bar"></span>
-                <span class="icon-bar bottom-bar"></span>
-                <span class="sr-only">Toggle navigation</span>
-            </button>
-            <!-- / navbar-toggler -->
-
-            <div class="collapse navbar-collapse" id="navbar-toggle2">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#x">로그인</a>
-                    </li>
-                     <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#x">회원가입</a>
-                        <!-- / dropdown-menu -->
-                    </li>
-                    <!-- / dropdown -->
-                    <!-- / navbar-nav -->
-
-                <ul class="navbar-button p-0 m-0 ml-30">
-                    <li class="nav-item">
-                        <a href="https://wrapbootstrap.com/theme/soft-ui-neumorphism-style-ui-kit-WB0BTD6T1" class="btn btn-sm btn-outline-primary" target="_blank"><i class="fas fa-shopping-cart fs-12 mr-5"></i> <span>BUY NOW</span></a>
-                    </li>
-                </ul>
-            </div><!-- / navbar-collapse -->
-        </div><!-- / container -->
-    </nav><!-- / navbar -->
-
-    <header class="xxl bg-img" style="background-image: url(assets/images/placeholder.jpg)">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1 class="page-title">끼리끼리</h1>
-                    <h5 class="mb-30">우리동네 커뮤니티</h5>
-                    <p class="lead mb-25">동네를 설정하여 많은 사람들과 다양한 정보를 공유할 수 있습니다.</p>
-                </div><!-- column -->
-                <div class="col-md-6">
-                </div><!-- column -->
-            </div><!-- / row -->
-        </div><!-- / container -->
-    </header>
+    <div id="top"></div>
+    <!-- / top -->
+	
+	<!-- 헤더 타일 연결 -->
+	<div id="header">
+		<tiles:insertAttribute name="header"/>
+	</div>
 
     <div class="main-container">
         <div id="features" class="container p-y-150">
@@ -382,8 +300,11 @@ a.navbar-brand img {
             </div><!-- / container -->
         </section>
     </div><!-- / main-container -->
-
     
+    <!-- 위로 버튼 -->
+    <a href="#top" class="scroll-to-top smooth-scroll" data-nav-status="toggle"><i class="fas fa-chevron-up"></i></a>
+    
+    <!-- 풋터 타일 연결 -->
 	<div id="footer">
 		<tiles:insertAttribute name="footer"/>
 	</div>

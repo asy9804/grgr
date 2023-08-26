@@ -27,10 +27,6 @@
     <link href="${pageContext.request.contextPath}/assets/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	
-	<!-- 스크롤 하강 시 위로 가는 버튼 -->
-    <a href="#top" class="scroll-to-top smooth-scroll" data-nav-status="toggle"><i class="fas fa-chevron-up"></i></a>
-
 	<footer style="padding-bottom: 0px;">
 		<div class="container">
 			<div class="row v-center mobile-center">
@@ -130,7 +126,7 @@
          </div>
          <!-- / container -->
      </footer>
-           
+
             
 <!-- core JavaScript -->
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
