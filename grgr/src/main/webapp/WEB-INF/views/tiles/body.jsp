@@ -3,40 +3,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="kor">
-<head>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Soft UI - Neumorphism Style UI Kit">
-    <meta name="author" content="kingstudio.ro">
-    <!-- Favicon -->
-    <link rel="icon" href="${pageContext.request.contextPath}/assets/images/favicon.png">
-    <!-- Site Title -->
-    <title>Soft UI - Neumorphism Style UI Kit</title>
-    <!-- Bootstrap 4 core CSS -->
-    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
-    <link href="${pageContext.request.contextPath}/assets/css/animate.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
-</head>
-
 <body>
 
-		<section id="main-features ">
-            <div class="container ">
-
-                <div class="row mb-100">
-                    <div class="col-md-3">
-                        <div class="b-5 border-light rounded-10 raised move">
-                           <a href="components.html"><img src="${pageContext.request.contextPath}/assets/images/placeholder.jpg" alt="components" class="rounded"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
+	<section id="main-features ">
+		<div class="container ">
+			<div class="row mb-100">
+				<div class="col-md-3">
+					<div class="b-5 border-light rounded-10 raised move">
+						<a href="components.html"><img src="${pageContext.request.contextPath}/assets/images/white.png" alt="components" class="rounded"></a>
+					</div>
+					<!-- / promo-box -->
+				</div>
+				<!-- / column -->
 
                     <div class="col-md-3">
                         <div class="b-5 border-light rounded-10 raised move">

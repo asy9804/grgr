@@ -25,9 +25,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-	<header class="xxl bg-img " style="background-image: url(${pageContext.request.contextPath}/assets/images/placeholder-wide.jpg)">
+	<header class="xxl bg-img " style="background-image: url(${pageContext.request.contextPath}/resources/images/purple.png);
+		padding-bottom: 0px; padding-top: 125px;">
 		<nav class="navbar navbar-expand-lg navbar-light absolute top-0 left-0 right-0">
 			<div class="container">
 				<div class="navbar col-lg-1" href="#x">
@@ -45,7 +45,7 @@
 					<!-- / navbar-nav -->
 				</div>   
 				<div class="input-group input-w-overlap-btn ml-20">
-					<input type="text" class="form-control pill" placeholder="검색어를 입력하세요">
+					<input type="text" class="form-control pill" placeholder="검색어를 입력하세요.">
 						<span class="input-group-btn">
 							<button class="btn btn-sm btn-icon btn-circle btn-primary overlapping-btn" type="button">
 								<i class="fas fa-search"></i>
@@ -76,7 +76,8 @@
          </nav>
          <!-- / navbar -->
 	</header>
-
+	
+	
 <!-- core JavaScript -->
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
