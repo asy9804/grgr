@@ -44,34 +44,42 @@ public class QnaBoardController {
 		return "board/qna_boardlist";
 	}
 	
-	// 선택 게시글 조회 -> 읽어올때, 글번호로 사진정보를 select해서 출력할것
+	// 선택 게시글 조회
 	@GetMapping("/read")
 	public String qnaBoardRead(@RequestParam int qnaBno, SearchCondition searchCondition, Model model) {
-		try {
-			Integer prevQnaBno = qnaBoardService.prevQnaBno(searchCondition, qnaBno);
-			Integer nextQnaBno = qnaBoardService.nextQnaBno(searchCondition, qnaBno);
+		log.info("QnaBoardController() 클래스의 qnaBoardRead() 메소드 호출");
+	    try {
+	    	// 조회수 증가 처리
+			qnaBoardService.riseQnaViewCnt(qnaBno);
+	    	
+	        QnaBoard qnaBoard = qnaBoardService.getQnaBoard(qnaBno);
+	        Integer prevInfoBno = qnaBoardService.prevQnaBno(searchCondition, qnaBno);
+	        Integer nextInfoBno = qnaBoardService.nextQnaBno(searchCondition, qnaBno);
 
-			model.addAttribute("nextInfoBno", nextQnaBno);
-			model.addAttribute("prevQnaBno", prevQnaBno);
-			model.addAttribute("isLastPost", nextQnaBno == null);
-			model.addAttribute("isFirstPost", prevQnaBno == null);
-			model.addAttribute("searchCondition", searchCondition); // 검색 조건 추가
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "board/qna_board";
+	        model.addAttribute("qnaBoard", qnaBoard);
+	        model.addAttribute("nextQnaBno", nextInfoBno);
+	        model.addAttribute("prevQnaBno", prevInfoBno);
+	        model.addAttribute("isLastPost", nextInfoBno == null);
+	        model.addAttribute("isFirstPost", prevInfoBno == null);
+	        model.addAttribute("searchCondition", searchCondition); // 검색 조건 추가
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return "board/qna_board";
 	}
 	
 	// 글쓰기 페이지 요청
 	@GetMapping(value = "/write")
 	public String qnaBoardWrite(Model model) {
-		model.addAttribute("mode", "write");
+		log.info("QnaBoardController() 클래스의 qnaBoardWrite() 메소드 호출");
+		model.addAttribute("model", "write");
 		return "board/qna_write";
 	}
 		
 	// 글 작성 및 제출
 	@PostMapping(value = "/write")
 	public String infoBoardWrite(QnaBoard qnaBoard) throws WriteNullException {
+		log.info("QnaBoardController() 클래스의 infoBoardWrite() 메소드 호출");
 		int newBno = qnaBoardService.addQnaBoard(qnaBoard);
 
 		return "redirect:/qnaboard/read?qnaBno=" + newBno;
@@ -80,6 +88,8 @@ public class QnaBoardController {
 	// 글 수정페이지 요청
 	@GetMapping("/modify")
 	public String qnaBoardModify(int qnaBno, SearchCondition searchCondition, Model model) {
+		log.info("QnaBoardController() 클래스의 qnaBoardModify() 메소드 호출");
+		model.addAttribute("qnaBoard", qnaBoardService.getQnaBoard(qnaBno));
 		model.addAttribute("searchCondition", searchCondition);
 		return "board/qna_modify";
 	}
@@ -87,6 +97,7 @@ public class QnaBoardController {
 	// 글 수정 제출
 	@PostMapping(value="/modify")
 	public String qnaBoardModify(QnaBoard qnaBoard, RedirectAttributes rattr) throws WriteNullException{
+		log.info("QnaBoardController() 클래스의 qnaBoardModify() 메소드 호출");
 		//int uno = (int) session.getAttribute("uno");
 		if (qnaBoard.getQnaTitle() == null || qnaBoard.getQnaContent() == null) {
 			throw new WriteNullException("제목 또는 내용이 비어있습니다.");
@@ -100,6 +111,7 @@ public class QnaBoardController {
 	@RequestMapping("/remove")
 	public String qnaBoardRemove(@RequestParam Integer qnaBno, @RequestParam Integer uno, int pageNum,
 			RedirectAttributes rattr) {
+		log.info("QnaBoardController() 클래스의 qnaBoardRemove() 메소드 호출");
 		qnaBoardService.removeQnaBoard(qnaBno, uno);
 		rattr.addFlashAttribute("pageNum", pageNum);
 		return "redirect:/qnaboard/list?pageNum=" + pageNum;
