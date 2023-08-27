@@ -49,6 +49,10 @@
 	font-size: 2rem;
 	font-weight: 'bold';
 }
+
+.custom-icon {
+    color: black;
+  }
 </style>
 <body>
 	<div id="preloader">
@@ -69,49 +73,24 @@
 					<a href="#x"
 						class="d-inline title-color primary-hover fs-24 fw-bold mb-15"
 						style="margin: 10px">${qnaBoard.qnaTitle} </a>
- 					<c:if test="${qnaBoard.uno==2 }">
-						<a
-							href="<c:url value='/qnaboard/modify?qnaBno=${qnaBoard.qnaBno}'/>"
+						<a href="<c:url value='/qnaboard/modify${searchCondition.getQueryString(1)}&qnaBno=${qnaBoard.qnaBno}'/>"
 							class="btn btn-xs btn-primary pill"
 							style="float: right; font-size: 15px; margin: 10px"><span>수정</span></a>
-					</c:if>
-					<c:if test="${qnaBoard.uno==2 }">
 						<a
-							href="<c:url value='/qnaboard/remove?qnaBno=${qnaoBoard.qnaBno}&uno=${qnaBoard.uno}&pageNum=${searchpageNum }'/>"
+							href="<c:url value='/qnaboard/remove?qnaBno=${qnaBoard.qnaBno}'/>"
 							class="btn btn-xs btn-primary pill"
 							style="float: right; font-size: 15px; margin: 10px"><span>삭제</span></a>
-					</c:if>
-					<!-- 
 					<p
 						class="fs-12 post-meta-small p-y-15 pl-15 mb-15 border-secondary"
 						style="clear: both; padding: 10px">
-						<i class="fas fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate }
-							<span class="mr-5 ml-5 text-muted">|</span> <i class="fas fa-user mr-5">${qnaBoard.uno}</i>
-						<span class="mr-5 ml-5 text-muted">|</span>
-						<i class="fas fa-tag mr-5">${qnaBoard.qnaKeyword}</i>
-						<c:choose>
-							<c:when test="${qnaBoard.qnaKeyword=='all'}">전체</c:when>
-							<c:when test="${qnaBoard.qnaKeyword=='ilban'}">일반회원</c:when>
-							<c:when test="${qnaBoard.qnaKeyword=='sangkon'}">상권회원</c:when>
-						</c:choose>
-						<span class="mr-5 ml-5 text-muted">|</span>
-						<i class="fas fa-eye mr-5">${qnaBoard.qnaViewCnt}</i>
-					</p>
-					 -->
-					<p class="fs-12 post-meta-small p-y-15 pl-15 mb-15 border-secondary" 
-						style="clear: both; padding: 10px">
-					    <i class="fas fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate }
-					    <span class="mr-5 ml-5 text-muted">|</span>
-					    <i class="fas fa-user mr-5">${qnaBoard.uno}</i>
-					    <span class="mr-5 ml-5 text-muted">|</span>
-					    <i class="fas fa-tag mr-5">${qnaBoard.qnaKeyword}</i>
-					    <c:choose>
-					        <c:when test="${qnaBoard.qnaKeyword == 'all'}">전체</c:when>
-					        <c:when test="${qnaBoard.qnaKeyword == 'ilban'}">일반회원</c:when>
-					        <c:when test="${qnaBoard.qnaKeyword == 'sangkwon'}">상권회원</c:when>
-					    </c:choose>
-					    <span class="mr-5 ml-5 text-muted">|</span>
-					    <i class="fas fa-user mr-5">${qnaBoard.qnaViewCnt}</i>
+						<i class="fas fa-calendar-alt mr-5">${qnaBoard.qnaRegdate }</i>
+							<span class="mr-5 ml-5 text-muted">|</span>
+						<i class="fas fa-user mr-5">${qnaBoard.uno }</i>
+							<span class="mr-5 ml-5 text-muted">|</span> 
+						<i class="fas fa-tag mr-5">${qnaBoard.qnaKeyword }</i>
+							<span class="mr-5 ml-5 text-muted">|</span>
+							<span>조회수</span>
+						<span class="mr-5 ml-5 text-muted" style="color: #6c757d!important;">${qnaBoard.qnaViewCnt}</span>
 					</p>
 					<p class="m-y-30">${qnaBoard.qnaContent}</p>
 					<a
@@ -120,7 +99,8 @@
 						style="float: right; font-size: 15px"><span>글목록</span></a>
 				</div>
 				<!-- / column -->
-- 				<!-- 이전글, 다음글 -->
+				
+ 				<!-- 이전글, 다음글 -->
 				<nav aria-label="pager" style="clear: both; padding-top: 30px">
 					<ul class="pager">
 						<c:if test="${!isFirstPost }">
