@@ -65,7 +65,7 @@
 	<!-- 큰 컨테이너  -->
 	<section class="lg bg-light-grey">
 		<div class="container">
-			<div class="w-60 m-x-auto mt-70">
+			<div class="w-90 m-x-auto mt-70">
 				<h4 class="mb-30 text-left">글수정</h4>
 				<c:if test="${not empty msg}">
 					<div class="alert alert-danger">${msg}</div>
