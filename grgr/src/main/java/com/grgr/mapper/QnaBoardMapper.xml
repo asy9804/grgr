@@ -18,40 +18,50 @@
 			</choose>
 		</trim>
 	</sql>
-
+ 
+	<!-- 총 게시글 수 -->
+	<select id="qnaBoardCount" resultType="int">
+		select count(*) from qna_board where <include refid="search"/>
+		qna_blindstate=1
+		<if test="qnaKeyword!=null and qnaKeyword != ''">
+		and qna_keyword=#{qnaKeyword}</if>
+	</select>
+	
 	<!-- 게시글 삽입 -->
 	<insert id="insertQnaBoard">
 		<selectKey resultType="int" keyProperty="qnaBno" order="BEFORE">
 			select qna_bno_seq.nextval 
 			from dual 
 		</selectKey>
-		insert into qna_board values(#{qnaBno}, #{uno}, #{qnaKeyword}, #{qnaTitle}
-			, #{qnaContent}, #{qnaViewCnt}, #{qnaBlindstate}, SYSDATE
-			, SYSDATE, #{qnaUpdateUno})
+		insert into qna_board(qna_bno, uno, qna_keyword, qna_title
+			, qna_content, qna_view_cnt, qna_blindstate, qna_update_uno)
+		values(#{qnaBno}, #{uno}, #{qnaKeyword}, #{qnaTitle}, #{qnaContent}, #{uno})
 	</insert>	
 	
 	<!-- 게시글 수정 -->
 	<update id="updateQnaBoard">
 		update qna_board set qna_keyword=#{qnaKeyword}
 			, qna_title=#{qnaTitle}, qna_content=#{qnaContent}
-				, qna_blindstate=#{qnaBlindstate},qna_modifydate=SYSDATE 
-				,qna_update_uno=#{qnaUpdateUno}
+				, qna_modifydate=SYSDATE, qna_update_uno=#{uno}
 		where qna_bno=#{qnaBno} and uno=#{uno}
 	</update>
 	
 	<!-- 게시글 삭제 -->
-	<delete id="deleteQnaBoard">
-		delete 
-		from qna_board=3 
+	<update id="deleteQnaBoard">
+		update qna_board set qna_blindstate=3,
+			qna_update=SYSDATE, qna_update_uno=#{uno}
 		where qna_bno=#{qnaBno}
-	</delete>
-	 
-	<!-- 총 게시글 수 -->
-	<select id="qnaBoardCount" resultType="int">
-		select count(*) from qna_board where <if test="keyword!=null and keyword != ''"><include refid="search"></include></if>
-		qna_blindstate=1
-
-	</select>
+		and uno=#{uno}
+	</update>
+	
+	<!-- 관리자가 게시물 숨김 -->
+	<update id="blindQnaBoard">
+		update qna_board set
+		qna_blindstate = 2,
+		qna_update=SYSDATE, qna_update_uno = #{uno}
+		where
+		qna_bno=#{qnaBno}
+	</update> 
 	 
 	<!-- n번 게시글 -->
 	<select id="selectQnaBoard" resultType="QnaBoard">
@@ -65,13 +75,19 @@
 	<!-- 이전 글 번호 찾기 -->
 	<select id="selectPrevQnaBno" resultType="Integer">
 		select max(qna_bno)
-		from qna_board where qna_bno &lt; #{qnaBno} and qna_blindstate = 1
+		from qna_board where <include refid="search"/>
+		qna_bno &lt; #{qnaBno} and qna_blindstate = 1
+		<if test="qnaKeyword != null and qnaKeyword != ''">
+		and qna_keyword = #{qnaKeyword}</if> 
 	</select>
 
 	<!-- 다음 글 번호 찾기 -->
 	<select id="selectNextQnaBno" resultType="Integer">
 		select min(qna_bno)
-		from qna_board where qna_bno &gt; #{qnaBno} and qna_blindstate = 1
+		from qna_board where <include refid="search"/>
+		qna_bno &gt; #{qnaBno} and qna_blindstate = 1
+		<if test="qnaKeyword != null and qnaKeyword != ''">
+		and qna_keyword = #{qnaKeyword}</if> 
 	</select>
 	 
 	<!-- 게시글 목록 -->
@@ -85,9 +101,7 @@
 				<if test="qnaKeyword != null and qnaKeyword != ''">
 				and qna_keyword=#{qnaKeyword}
 				</if>
-				and ((qna_title like '%'||#{qnaTitle}||'%')
-					or (qna_content like '%'||#{qnaContent}||'%'))
-			order by qna_bno desc)
+			order by qna_bno desc, qna_modifydate desc)
 			board)
 		 where rn between #{startRow} and #{endRow}
 	</select>
