@@ -1,18 +1,13 @@
 package com.grgr.service;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.grgr.dao.QnaBoardDAO;
-import com.grgr.dto.InfoFile;
 import com.grgr.dto.QnaBoard;
-import com.grgr.exception.FileUploadFailException;
 import com.grgr.exception.WriteNullException;
 import com.grgr.util.Pager;
 import com.grgr.util.SearchCondition;
