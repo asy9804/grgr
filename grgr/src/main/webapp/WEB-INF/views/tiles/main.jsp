@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="col-md-2">
 							<div class="card-body text-center">
-								<a href="http://www.naver.com">
+								<a href="http://localhost:8000/grgr/qnaboard/list">
 									<img src="${pageContext.request.contextPath}/resources/images/free_logo.png" alt="자유게시판"
 										style="height: 90px; width: 80px; padding-bottom: 20px;">
 									<h6 class="card-title fw-regular mb-20">자유</h6>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-md-2">
 							<div class="card-body text-center">
-								<a href="http://www.naver.com">
+								<a href="http://localhost:8000/grgr/qnaboard/list">
 									<img src="${pageContext.request.contextPath}/resources/images/qna_logo.png" alt="문의게시판"
 										style="width: 80px; padding-bottom: 10px;">
 									<h6 class="card-title fw-regular mb-20">문의</h6>
