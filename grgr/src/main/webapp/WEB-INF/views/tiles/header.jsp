@@ -24,6 +24,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+    <!-- 배너 이동 -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 </head>
 <body>
 	<header class="xxl bg-img " style="background-image: url(${pageContext.request.contextPath}/resources/images/purple.png);
