@@ -3,39 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="kor">
-<head>
-<!-- Meta -->
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="Soft UI - Neumorphism Style UI Kit" />
-<meta name="author" content="kingstudio.ro" />
-<!-- Favicon -->
-<link rel="icon"
-	href="${pageContext.request.contextPath}/assets/images/favicon.png" />
-<!-- Site Title -->
-<title>Soft UI - Neumorphism Style UI Kit</title>
-<!-- Bootstrap 4 core CSS -->
-<link
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css"
-	rel="stylesheet" />
-<!-- Custom Styles -->
-<link href="${pageContext.request.contextPath}/assets/css/animate.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/assets/css/style.css"
-	rel="stylesheet" />
-<!-- Fonts -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap"
-	rel="stylesheet" />
-<link
-	href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
-	rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath}/assets/css/fontawesome-all.min.css"
-	rel="stylesheet" type="text/css" />
-</head>
+
+<!-- 헤더 연결 -->
+<%@ include file="/WEB-INF/views/tiles/header.jsp" %>
+
 <style>
 .va-middle {
 	font-size: 20px;
@@ -65,7 +36,7 @@
 	<!-- 큰 컨테이너  -->
 	<section class="lg bg-light-grey">
 		<div class="container">
-			<div class="w-60 m-x-auto mt-70">
+			<div class="w-90 m-x-auto mt-70">
 				<h4 class="mb-30 text-left">글수정</h4>
 				<c:if test="${not empty msg}">
 					<div class="alert alert-danger">${msg}</div>
@@ -75,7 +46,7 @@
 					<input type="hidden" name="uno" value="${qnaBoard.uno}" /> 
 					<input type="hidden" name="qnaBno" value="${qnaBoard.qnaBno}" /> 
 					<input type="hidden" name="qnaUpdateUno" value="${qnaBoard.uno}" /> 
-					<div class="row">
+				<div class="row">
 						<div class="col-md-3">
 							<div class="col-md-0 tablet-top">
 								<select class="custom-select" id="select" name="qnaKeyword"
@@ -108,34 +79,29 @@
 							<div class="form-group">
 								<input type="text" class="form-control" id="contact-email"
 									name="qnaTitle" required="true"
-									style="font-family: 'Font Awesome 5 Free', sans-serif !important; font-weight: 400"
+									style="font-family: 'Font Awesome 5 Free', sans-serif !important; font-weight: 400; color: #000;"
 									aria-required="true" value="${qnaBoard.qnaTitle}">
 							</div>
 							<!-- / form-group -->
 						</div>
 						<!-- / column -->
-
+						
 						<div class="form-group">
 							<textarea id="contact-message" class="form-control"
-								name="qnaContent" rows="8" required="true"
-								style="font-family: 'Font Awesome 5 Free', sans-serif !important; font-weight: 400; min-height: 500px; max-height: 500px;"
+								name="qnaContent" rows="12" required="true"
+								style="font-family: 'Font Awesome 5 Free', sans-serif !important; font-weight: 400; min-height: 500px; max-height: 500px; color: #000;"
 								aria-required="true">${qnaBoard.qnaContent}</textarea>
 						</div>
-
-						<div class="col-md-2 text-center">사진첨부</div>
-
-						<div class="col-md-6">
-							<img
-								src="${pageContext.request.contextPath}/assets/images/placeholder-wide.jpg"
-								alt="default-img" class="rounded">
-						</div>
 						<!-- / form-group -->
-					</div>
-					<!-- / column -->
 
-					<div class="fas mr-10 float-end">
-						<button type="submit" class="btn btn-primary-gradient btn-submit">수정</button>
-
+					<!-- 글 목록/ 수정 버튼 -->
+					<div style="text-align: right;">
+						<a
+							href="<c:url value='/qnaboard/list${searchCondition.getQueryString()}'/>"
+							target="_blank">
+							<button type="button" class="btn btn-primary-gradient">글목록</button>
+						</a>
+						<button type="submit" class="btn btn-primary-gradient">수정</button>
 					</div>
 				</form>
 				<!-- / form-group -->
@@ -144,33 +110,12 @@
 	</section>
 	<!-- / pagination-center -->
 
-	<a href="#top" class="scroll-to-top is-hidden smooth-scroll"
-		data-nav-status="toggle"><i class="fas fa-chevron-up"></i></a>
+	<a href="#top" class="scroll-to-top is-hidden smooth-scroll" data-nav-status="toggle">
+		<i class="fas fa-chevron-up"></i>
+	</a>
 
 	<!-- footer 영역 -->
-	<footer>
-		<div class="container">
-			<div class="row v-center mobile-center">
-				<div class="col-md-4 footer-left-area tablet-top">
-					<p>
-						© Soft UI by <a href="https://kingstudio.ro" target="_blank">KingStudio</a>
-					</p>
-				</div>
-				<!-- / footer-left-area -->
-				<div class="col-md-8 footer-right-area">
-					<p>
-						<a href="${pageContext.request.contextPath}/index.html" class="text-link mr-15">Home</a> <a
-							href="${pageContext.request.contextPath}/components.html" class="text-link mr-15">Components</a>
-						<a href="${pageContext.request.contextPath}/sections.html" class="text-link mr-15">Sections</a> <a
-							href="${pageContext.request.contextPath}/templates.html" class="text-link">Templates</a>
-					</p>
-				</div>
-				<!-- / footer-right-area -->
-			</div>
-			<!-- / row -->
-		</div>
-		<!-- / container -->
-	</footer>
+	<%@ include file="/WEB-INF/views/tiles/footer.jsp" %>
 
 	<!-- core JavaScript -->
 	<script
