@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-md-2">
 							<div class="card-body text-center">
-								<a href="http://localhost:8000/grgr/qnaboard/list">
+								<a href="${pageContext.request.contextPath}/qnaboard/list">
 									<img src="${pageContext.request.contextPath}/resources/images/qna_logo.png" alt="문의게시판"
 										style="width: 80px; padding-bottom: 10px;">
 									<h6 class="card-title fw-regular mb-20">문의</h6>
@@ -100,287 +100,143 @@
                 <!-- / container -->
             </section>
             
+            <section>
+            	<div class="container">
+            	<div class="col-lg-6">
+                        <div class="widget p-30 rounded-10" style="padding-top: 0px !important;">
+                            <h6 class="wcard-title fw-regular mb-20">게시판명1</h6>
+                            <div class="post-widget">
+                                <ul class="list-unstyled mb-0">
+                                    <li>
+                                    	<a href="<c:url value='/qna_boardlist' />" class="recent-post-link">
+	                                        <div class="recent-post first mb-20">
+	                                            <div class="recent-post-image">
+	                                                <img src="assets/images/placeholder.jpg" alt="" class="raised-xs">
+	                                            </div><!-- / recent-post-image -->
+	                                            <div class="recent-post-content">
+	                                                <a href="#x" class="recent-post-title">게시글 제목</a>
+	                                                <p class="post-tag">글내용</p>
+	                                                <p class="post-date opc-75"><i class="far fa-clock text-primary mr-5 va-middle"></i><span class="va-middle">Jul 18, 2020</span></p>
+	                                            </div><!-- / recent-post-content -->
+	                                        </div><!-- / recent-posts -->
+										</a>
+                                    </li>
+                                    <li>
+                                        <a href="<c:url value='/qna_boardlist' />" class="recent-post-link">
+	                                        <div class="recent-post first mb-20">
+	                                            <div class="recent-post-image">
+	                                                <img src="assets/images/placeholder.jpg" alt="" class="raised-xs">
+	                                            </div><!-- / recent-post-image -->
+	                                            <div class="recent-post-content">
+	                                                <a href="#x" class="recent-post-title">게시글 제목</a>
+	                                                <p class="post-tag">글내용</p>
+	                                                <p class="post-date opc-75"><i class="far fa-clock text-primary mr-5 va-middle"></i><span class="va-middle">Jul 18, 2020</span></p>
+	                                            </div><!-- / recent-post-content -->
+	                                        </div><!-- / recent-posts -->
+										</a>
+                                    </li>
+                                </ul><!-- / list-unstyled -->
+                            </div><!-- / post-widget -->
+                        </div><!-- / widget -->
+                    </div>
+                    </div>
+            </section>
 
             <section class="lg">
                 <div class="container">
-                    <div class="section-title-area text-center relative z-index-1 mb-70">
-                        <h3 class="section-title">Executive Team</h3>
-                        <h5 class="section-sub-title">Get in touch</h5>
+                    <div class="section-title-area text-center relative mb-70">
+                        <h3 class="section-title" style="text-align: left;">게시판명2</h3>
                     </div><!-- / section-title-area -->
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <img class="mb-30 rounded w-60 raised-sm" src="assets/images/placeholder-square.jpg" alt="">
-                                    <p class="mb-5 fs-10 secondary-font text-black">Manager</p>
-                                    <h6 class="card-title fw-bold mb-10 text-primary">Jacob Ginnish</h6>
-                                    <p class="card-text mb-30">Suspendisse in orci vitae sapien semper posuere mauris at imperdiet.</p>
-                                    <p class="mb-0">
-                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-phone fa-rotate-90 mr-5"></span> <span>Call Now</span></a>
-                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-envelope mr-5"></span> <span>Send Email</span></a></p>
-                                </div><!-- / card-body -->
-                            </div><!-- / card -->
+                            <div class="card-body">
+                            	<a href="${pageContext.request.contextPath}/qnaboard/list">
+	                                <div class="card-body text-center">
+	                                    <img class="mb-30 w-60" src="assets/images/placeholder-square.jpg" alt="">
+	                                    <h6 class="card-title fw-bold mb-10 text-black">게시글 제목입니다.</h6>
+	                                    <p class="card-text mb-30">게시글 내용입니다.게시글 내용입니다.게시글 내용입니다.게시글 내용입니다.</p>
+	                                </div>
+	                                <!-- / card-body -->
+                                </a>
+                            </div>
+                            <!-- / card -->
                         </div><!-- / column -->
 
                         <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <img class="mb-30 rounded w-60 raised-sm" src="assets/images/placeholder-square.jpg" alt="">
-                                    <p class="mb-5 fs-10 secondary-font text-black">Designer</p>
-                                    <h6 class="card-title fw-bold mb-10 text-primary">Merida Swan</h6>
-                                    <p class="card-text mb-30">Suspendisse in orci vitae sapien semper posuere mauris at imperdiet.</p>
-                                    <p class="mb-0">
-                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-phone fa-rotate-90 mr-5"></span> <span>Call Now</span></a>
-                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-envelope mr-5"></span> <span>Send Email</span></a></p>
-                                </div><!-- / card-body -->
-                            </div><!-- / card -->
+                            <div class="card-body">
+                            	<a href="${pageContext.request.contextPath}/qnaboard/list">
+	                                <div class="card-body text-center">
+	                                    <img class="mb-30 w-60" src="assets/images/placeholder-square.jpg" alt="">
+	                                    <h6 class="card-title fw-bold mb-10 text-black">게시글 제목입니다.</h6>
+	                                    <p class="card-text mb-30">게시글 내용입니다.게시글 내용입니다.게시글 내용입니다.게시글 내용입니다.</p>
+	                                </div>
+	                                <!-- / card-body -->
+                                </a>
+                            </div>
+                            <!-- / card -->
                         </div><!-- / column -->
 
                         <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <img class="mb-30 rounded w-60 raised-sm" src="assets/images/placeholder-square.jpg" alt="">
-                                    <p class="mb-5 fs-10 secondary-font text-black">Developer</p>
-                                    <h6 class="card-title fw-bold mb-10 text-primary">Larry Lin</h6>
-                                    <p class="card-text mb-30">Suspendisse in orci vitae sapien semper posuere mauris at imperdiet.</p>
-                                    <p class="mb-0">
-                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-phone fa-rotate-90 mr-5"></span> <span>Call Now</span></a>
-                                        <a href="#x" class="btn btn-xs btn-primary m-5 pill"><span class="fas fa-envelope mr-5"></span> <span>Send Email</span></a></p>
-                                </div><!-- / card-body -->
+                            <div class="card-body">
+                            	<a href="${pageContext.request.contextPath}/qnaboard/list">
+	                                <div class="card-body text-center">
+	                                    <img class="mb-30 w-60" src="assets/images/placeholder-square.jpg" alt="">
+	                                    <h6 class="card-title fw-bold mb-10 text-black">게시글 제목입니다.</h6>
+	                                    <p class="card-text mb-30">게시글 내용입니다.게시글 내용입니다.게시글 내용입니다.게시글 내용입니다.</p>
+	                                </div>
+	                                <!-- / card-body -->
+                                </a>
+                            </div>
+                            <!-- / card -->
                             </div><!-- / card -->
                         </div><!-- / column -->
                     </div><!-- / row -->
                 </div><!-- / container -->
             </section>
-        </div>
-        </div><!-- / container -->
+        
+        
+        <section class="lg">
+                <div class="container">
+                    <div class="section-title-area text-center mb-70">
+                        <h2 class="section-title" style="text-align: left;">게시판명3</h2>
+                    </div>
+                    <!-- / section-title-area -->
+                    <ul class="row portfolio project-grid list-unstyled mb-0 shuffle" id="grid" style="position: relative; overflow: hidden; height: 709.391px; transition: height 250ms ease-out 0s;">
+						<li class="col-md-6 col-lg-4 project shuffle-item filtered" data-groups="[&quot;modern&quot;]" style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out 0s, opacity 250ms ease-out 0s; opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);">
+                            <div class="card-body" style="background-color: white">
+                                <img class="img-responsive card-img-top" src="assets/images/placeholder.jpg" alt="">
+                                <div class="card-body p-y-20 text-center">
+                                    <a href="#x" class="card-title title-link primary-hover fs-20">게시판 제목</a>
+                                    <p class="fs-12 post-meta-small mt-15 mb-0"><i class="fas fa-tag mr-10"></i>키워드?태그?</p>
+                                </div><!-- / card-body -->
+                            </div><!-- / card -->
+                        </li>
 
-        <section id="main-features" class="pt-150 pb-0 bg-img img-bottom" style="background-image: url(assets/images/placeholder.jpg)">
-            <div class="container">
-                <div class="section-title-area text-center mb-150">
-                    <h2 class="section-title">Main Features</h2>
-                    <p class="w-60 m-x-auto mb-0">Soft UI Kit is a modern Bootstrap 4 UI Kit, designed and developed with attention to detail. Includes 500+ reusable components, 50+ pre-built sections and 10 pre-built templates.</p>
-                </div><!-- / section-title-area -->
-                <div class="row">
-                    <div class="col-md-4 tablet-top-30">
-                        <div class="b-5 border-light rounded-10 raised move">
-                           <a href="components.html"><img src="assets/images/placeholder.jpg" alt="components" class="rounded"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
+                        <!-- project -->
+                        <li class="col-md-6 col-lg-4 project shuffle-item filtered" data-groups="[&quot;modern&quot;]" style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out 0s, opacity 250ms ease-out 0s; opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);">
+                            <div class="card-body" style="background-color: white">
+                                <img class="img-responsive card-img-top" src="assets/images/placeholder.jpg" alt="">
+                                <div class="card-body p-y-20 text-center">
+                                    <a href="#x" class="card-title title-link primary-hover fs-20">게시판 제목</a>
+                                    <p class="fs-12 post-meta-small mt-15 mb-0"><i class="fas fa-tag mr-10"></i>키워드?태그?</p>
+                                </div><!-- / card-body -->
+                            </div><!-- / card -->
+                        </li>
+                        <!-- project -->
+                        <li class="col-md-6 col-lg-4 project shuffle-item filtered" data-groups="[&quot;modern&quot;]" style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out 0s, opacity 250ms ease-out 0s; opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);">
+                            <div class="card-body" style="background-color: white">
+                                <img class="img-responsive card-img-top" src="assets/images/placeholder.jpg" alt="">
+                                <div class="card-body p-y-20 text-center">
+                                    <a href="#x" class="card-title title-link primary-hover fs-20">게시판 제목</a>
+                                    <p class="fs-12 post-meta-small mt-15 mb-0"><i class="fas fa-tag mr-10"></i>키워드?태그?</p>
+                                </div><!-- / card-body -->
+                            </div><!-- / card -->
+                        </li>                       
+                    </ul><!-- / portfolio -->
+                </div><!-- / container -->
+            </section>
 
-                    <div class="col-md-4 tablet-top-30">
-                        <div class="b-5 border-light rounded-10 raised move">
-                           <a href="sections.html"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-4">
-                        <div class="b-5 border-light rounded-10 raised move">
-                           <a href="templates.html"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-                </div><!-- / row -->
-            </div><!-- / container -->
-        </section>
-
-        <section id="components" class="lg pb-0">
-            <div class="container text-center">
-                <div class="section-title-area mb-70">
-                    <h3 class="section-title">COMPONENTS</h3>
-                    <h5 class="section-sub-title fs-12 lh-1-5 w-30 m-x-auto">Typography, Buttons, Modals, Checkboxes, Progress-bars, Sliders, Navigations, Forms, Cards and Extras.</h5>
-                </div><!-- / section-title-area -->
-
-                <a href="components.html" target="_blank"><img src="assets/images/placeholder.jpg" alt=""></a>
-            </div><!-- / container -->
-        </section>
-
-        <section id="sections" class="lg bg-light-grey">
-            <div class="container-fluid">
-                <div class="section-title-area text-center mb-70">
-                    <h3 class="section-title">SECTIONS</h3>
-                    <h5 class="section-sub-title fs-12 lh-1-5 w-20 m-x-auto">Headers, Features, Projects, Posts, Teams, Testimonials, Pricing, Products, Contacts and Footers</h5>
-                </div><!-- / section-title-area -->
-
-                <div class="row">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#headers" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#headers" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#features" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#features" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#projects" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#posts" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#posts" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#teams" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#testimonials" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#pricing" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#products" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="sections.html#contacts" target="_blank"><img src="assets/images/placeholder.jpg" alt="sections" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-                </div><!-- / row -->
-                <div class="text-center mt-30">
-                    <a href="sections.html" target="_blank" class="btn btn-primary"><i class="fas fa-stream mr-5"></i> View All</a>
-                </div>
-            </div><!-- / container-fluid -->
-        </section>
-
-        <section id="templates" class="lg bg-light">
-            <div class="container-fluid">
-                <div class="section-title-area text-center mb-70">
-                    <h3 class="section-title">TEMPLATES</h3>
-                    <h5 class="section-sub-title fs-12 lh-1-5 w-20 m-x-auto">More coming soon!</h5>
-                </div><!-- / section-title-area -->
-
-                <div class="row">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/landing-page.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/portfolio.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/project.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/blog.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/post.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/ecommerce.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/product.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/404.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/login-register.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="templates/account.html" target="_blank"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="#x"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-
-                    <div class="col-md-6 col-lg-3">
-                        <div class="promo-box p-5">
-                           <a href="#x"><img src="assets/images/placeholder.jpg" alt="templates" class="rounded-5"></a>
-                        </div><!-- / promo-box -->
-                    </div><!-- / column -->
-                </div><!-- / row -->
-                <div class="text-center mt-30">
-                    <a href="templates.html" target="_blank" class="btn btn-primary"><i class="fas fa-images mr-5"></i> View All</a>
-                </div>
-            </div><!-- / container-fluid -->
-        </section>
-
-        <section id="cta" class="xl bg-img" style="background-image: url(assets/images/placeholder.jpg)">
-            <div class="container text-center relative z-index-1">
-                <h2 class="mb-30">Soft UI - Neumorphism Style UI Kit</h2>
-                <p class="lead fs-18 mb-50 w-90 m-x-auto">Soft UI Kit is not just easy to use, but is also very easy to customize. Building a web-app, a website, changing colors and styling never has been easier. We redesigned most of the default Bootstrap components, added many custom classes, utility classes, custom elements and plugins to build up a beautifully designed, very functional and feature-rich UI Kit.</p>
-                <a href="https://kingstudio.ro/contact.html" target="_blank" class="btn btn-primary m-5"><i class="fas fa-envelope-open mr-5"></i> Contact Us</a>
-                <a href="https://wrapbootstrap.com/theme/soft-ui-neumorphism-style-ui-kit-WB0BTD6T1" target="_blank" class="btn btn-primary m-5"><i class="fas fa-shopping-cart mr-5"></i> Buy Now</a>
-            </div><!-- / container -->
-        </section>
-
-        <section id="cta2" class="big bg-dark-shadow">
-            <div class="container text-center">
-                <h3 class="hidden mb-20">Suggest Feature</h3>
-                <p class="w-50 m-x-auto mb-0">*We are planning to extend the functionality of the UI Kit, add more elements, templates and features, all based on feature requests, if you have ideas, please don't hesitate to suggest a new template, element or feature by contacting us <a href="https://kingstudio.ro/contact.html" target="_blank" style="text-decoration: underline;">here</a>!</p>
-            </div><!-- / container -->
-        </section>
+       
     </div><!-- / main-container -->
     
     <!-- 위로 버튼 -->

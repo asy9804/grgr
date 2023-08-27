@@ -32,9 +32,10 @@
 		padding-bottom: 0px; padding-top: 125px;">
 		<nav class="navbar navbar-expand-lg navbar-light absolute top-0 left-0 right-0">
 			<div class="container">
-				<div class="navbar col-lg-1" href="#x">
-					<img src="${pageContext.request.contextPath}/resources/images/grgr_logo.png" alt="">
-				</div>
+				<a href="<c:url value='/main' />" class="navbar col-lg-1">
+					<img src="${pageContext.request.contextPath}/resources/images/grgr_logo.png" alt="메인로고">
+				</a>
+				
 				<div class="collapse navbar-collapse col-lg-3" id="navbar-toggle1">
 					<ul class="navbar-nav ml-30">
 						<li class="nav-item">
