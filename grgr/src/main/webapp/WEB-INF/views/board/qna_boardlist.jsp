@@ -3,39 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
+<html lang="kor">
 <head>
-<!-- Meta -->
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="Soft UI - Neumorphism Style UI Kit" />
-<meta name="author" content="kingstudio.ro" />
-<!-- Favicon -->
-<link rel="icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" />
-<!-- Site Title -->
-<p>Soft UI - Neumorphism Style UI Kit</p>
-<title>Soft UI - Neumorphism Style UI Kit</title>
-<!-- Bootstrap 4 core CSS -->
-<link
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css"
-	rel="stylesheet" />
-<!-- Custom Styles -->
-<link href="${pageContext.request.contextPath}/assets/css/animate.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/assets/css/style.css"
-	rel="stylesheet" />
-<!-- Fonts -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap"
-	rel="stylesheet" />
-<link
-	href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
-	rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath}/assets/css/fontawesome-all.min.css"
-	rel="stylesheet" type="text/css" />
+<%@ include file="/WEB-INF/views/tiles/header.jsp" %>
 </head>
 <style>
 .va-middle {
@@ -49,6 +19,13 @@
 .mb-20 {
 	font-size: 2rem;
 	font-weight: 'bold';
+}
+.btn-outline-primary {
+  font-size: 18px; /* 원하는 크기로 설정 */
+}
+.selected {
+  background-color: #007bff; // 선택된 배경색
+  color: #ffffff; // 선택된 텍스트 색상
 }
 </style>
 <body>
@@ -67,11 +44,10 @@
 			<h2 class="hidden">Qna Board List</h2>
 			<!-- 키워드 -->
 			<ul class="portfolio-filter list-inline text-center mb-30"> 
-				<li id="portfolio-filter-list"><a href="#" data-group="all" class="active ml-2">전체</a></li>
-					<!-- ${userInfo_Loc} -->
-				<li id="portfolio-filter-list"><a href="#" data-group="ilban">일반회원</a>
+				<li id="keyword-button"><a href="#" data-group="all" class="btn btn-outline-primary m-y-10 mr-10">전체</a></li>
+				<li id="keyword-button"><a href="<c:url value="/qnaboard/list?keyword=ilban"/>" class="btn btn-outline-primary m-y-10 mr-10" >일반회원</a>
 				</li>
-				<li id="portfolio-filter-list"><a href="#" data-group="sangkwon">상권회원</a>
+				<li id="keyword-button"><a href="<c:url value="/qnaboard/list?keyword=sangkwon"/>" class="btn btn-outline-primary m-y-10 mr-10" >상권회원</a>
 				</li>
 			</ul>
 
@@ -124,29 +100,21 @@
 					id="grid" style="clear: both">
 					<!--====================================================================================================  -->
 					<!-- project : 게시글 list 출력 -->
+					<c:set var="i" value="0"/>
 					<c:forEach items="${qnaBoardList}" var="qnaBoard">
-						<li class="col-md-12 col-lg-0 project"
-							data-groups='["${qnaBoard.qnaKeyword}"]'>
+						<li class="col-md-12 col-lg-0 project">
 							<a href="<c:url value='/qnaboard/read${pager.searchCondition.getQueryString()}&qnaBno=${qnaBoard.qnaBno}'/>">
 								<!-- &pageNum=${pageNum} -->
-								
 								<div class="promo-box">
 									<div class="cta p-0">
 										<div class="row v-center">
-											<div class="col-lg-2 tablet-lg-top-30 tablet-lg-center">
-											<!-- 사진 제외
-												<img src="${pageContext.request.contextPath}/assets/images/placeholder-square.jpg"
-												alt="default-img" class="rounded" /> --> 
-											</div>
-											
-											<!-- / column -->
-											<div class="col-lg-10 text-left tablet-lg-center">
+											<div class="col-lg-12 text-left tablet-lg-center">
 												<p class="mb-20">${qnaBoard.qnaTitle}</p>
 												<p class="lead mb-20">${qnaBoard.qnaContent}</p>
 												<p class="lead mb-10">${qnaBoard.qnaViewCnt}</p>
 												<p class="fs-16 post-meta-small mt-15 mb-0"
 													style="text-align: right">
-													<i class="far fa-calendar-alt mr-5"></i>${qnaBoard.qnaRegdate}
+													<i class="far fa-calendar-alt mr-5">${qnaBoard.qnaRegdate}</i>
 														<span class="m-x-10 text-muted">|</span> 
 													<i class="fas fa-tag mr-10"></i>
 													<c:choose>
@@ -181,8 +149,8 @@
 						<i class="fas fa-arrow-left mb-5"></i></a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="page-item disabled"><a class="page-link" href="#x"><i
-							class="fas fa-arrow-left mb-5"></i></a></li>
+					<li class="page-item disabled"><a class="page-link" href="#x">
+						<i class="fas fa-arrow-left mb-5"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 			<!-- 페이지 목록 출력 -->
@@ -206,8 +174,8 @@
 							<i class="fas fa-arrow-right mb-5"></i></a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="page-item disabled"><a class="page-link" href="#x"><i
-							class="fas fa-arrow-right mb-5"></i></a></li>
+					<li class="page-item disabled"><a class="page-link" href="#x">
+						<i class="fas fa-arrow-right mb-5"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 
@@ -219,33 +187,7 @@
 		data-nav-status="toggle"><i class="fas fa-chevron-up"></i></a>
 
 	<!-- footer 영역 -->
-	<footer>
-		<div class="container">
-			<div class="row v-center mobile-center">
-				<div class="col-md-4 footer-left-area tablet-top">
-					<p>
-						© Soft UI by <a href="https://kingstudio.ro" target="_blank">KingStudio</a>
-					</p>
-				</div>
-				<!-- / footer-left-area -->
-				<div class="col-md-8 footer-right-area">
-					<p>
-						<a href="${pageContext.request.contextPath}/index.html"
-							class="text-link mr-15">Home</a> <a
-							href="${pageContext.request.contextPath}/components.html"
-							class="text-link mr-15">Components</a> <a
-							href="${pageContext.request.contextPath}/sections.html"
-							class="text-link mr-15">Sections</a> <a
-							href="${pageContext.request.contextPath}/templates.html"
-							class="text-link">Templates</a>
-					</p>
-				</div>
-				<!-- / footer-right-area -->
-			</div>
-			<!-- / row -->
-		</div>
-		<!-- / container -->
-	</footer>
+	<%@ include file="/WEB-INF/views/tiles/footer.jsp" %>
 
 	<!-- core JavaScript -->
 	<script
