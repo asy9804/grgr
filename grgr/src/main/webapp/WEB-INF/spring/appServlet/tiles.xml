@@ -14,26 +14,27 @@
 		
 		<!-- "tiles/main" 을 메인으로 사용하여 헤더, 바디, 풋터로 사용 -->
 		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp"/>
-		<put-attribute name="content" value="/WEB-INF/views/tiles/body.jsp"/>
+		<put-attribute name="body" value=""/>
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp"/>
 	</definition>
 
-	<definition name="main/*" extends="main">
+	<definition name="board/*" extends="main">
 		<put-attribute name="content" value="/WEB-INF/views/tiles/{1}.jsp"/>
 	</definition>
 	
-	<definition name="main/*/*" extends="main">
-		<put-attribute name="content" value="/WEB-INF/views/tiles/{1}/{2}.jsp"/>
+	<definition name="board/*/*" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/board/{1}/{2}.jsp"/>
 	</definition>	
 	
-	<definition name="main/*/*" extends="main">
-		<put-attribute name="content" value="/WEB-INF/views/tiles/{1}/{2}.jsp"/>
+	<definition name="board/*/*" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/board/{1}/{2}.jsp"/>
 	</definition>
 	
-	<!-- tiles 제외 시킨다 -->
+	<!-- tiles 제외 시킨다
    	<definition name="empty" template="/WEB-INF/views/tiles/empty.jsp">
 		<put-attribute name="content" value=""/>
 	</definition>
+	 -->
 	
 	
 </tiles-definitions>	
