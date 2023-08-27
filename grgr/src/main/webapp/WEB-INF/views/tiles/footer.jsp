@@ -10,7 +10,7 @@
 				<!-- 고객센터 안내 -->
 				<div class="col-md-5 footer-left-area tablet-top">
 					<h6 class="widget-title mb-20">고객센터</h6>
-					<p class="mb-20">평일 10:00 ~18:00<br>(점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)</p>
+					<p class="mb-15">평일 10:00 ~18:00<br>(점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)</p>
 				</div>
 								
 				<!-- 카테고리 -->
