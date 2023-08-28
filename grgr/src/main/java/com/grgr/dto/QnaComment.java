@@ -3,6 +3,17 @@ package com.grgr.dto;
 import lombok.Data;
 
 /*
+CREATE TABLE QNA_COMMENT(QNA_COMMENT_NO NUMBER PRIMARY KEY
+    , UNO NUMBER NOT NULL
+    , QNA_BNO NUMBER NOT NULL
+    , CONSTRAINT QNA_COM_BNO_FK FOREIGN KEY(QNA_BNO) REFERENCES QNA_BOARD(QNA_BNO)
+    , QNA_COMMENT_CONTENT VARCHAR2(1000)
+    , QNA_COMMENT_GROUP NUMBER
+    , QNA_COMMENT_BLINDSTATE NUMBER DEFAULT 1 NOT NULL CHECK(QNA_COMMENT_BLINDSTATE BETWEEN 1 AND 3)
+    , QNA_COMMENT_REGDATE DATE DEFAULT SYSDATE
+    , QNA_COMMENT_UPDATE DATE DEFAULT SYSDATE
+    , QNA_COMMENT_UPDATE_UNO NUMBER);
+     
 이름                     널?       유형             
 ---------------------- -------- -------------- 
 QNA_COMMENT_NO         NOT NULL NUMBER         
@@ -19,14 +30,14 @@ QNA_COMMENT_UPDATE_UNO          NUMBER
 
 @Data
 public class QnaComment {
-	private int qna_comment_no;
-	private int qna_uno;
-	private int qna_bno;
-	private String qna_comment_content;
-	private int qna_comment_group;
-	private int qna_comment_dept;
-	private int qna_comment_order;
-	private String qna_comment_regdate;
-	private String qna_comment_update;
-	private int qna_comment_update_uno;
+	private int qnaCommentNo;
+	private int uno;
+	private int qnaBno;
+	private String qnaCommentContent;
+	private int qnaCommentGroup;
+	private int qnaCommentDept;
+	private int qnaCommentOrder;
+	private String qnaCommentRegdate;
+	private String qnaCommentUpdate;
+	private int qnaCommentUpdateUno;
 }

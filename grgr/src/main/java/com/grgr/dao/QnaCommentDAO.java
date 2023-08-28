@@ -1,11 +1,11 @@
-package com.grgr.mapper;
+package com.grgr.dao;
 
 import java.util.List;
 import java.util.Map;
 
 import com.grgr.dto.QnaComment;
 
-public interface QnaCommentMapper {
+public interface QnaCommentDAO {
 	int qnaCommentCount(int qnaBno);
 	List<QnaComment> selectQnaCommentList(Map<String, Object> map);
 	int insertQnaComment(QnaComment qnaComment);
