@@ -4,9 +4,10 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="kor">
-<head>
+
+<!-- 헤더 -->
 <%@ include file="/WEB-INF/views/tiles/header.jsp" %>
-</head>
+
 <style>
 .va-middle {
 	font-size: 20px;
