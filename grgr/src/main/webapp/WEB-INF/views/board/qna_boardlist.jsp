@@ -28,6 +28,7 @@
   background-color: #007bff; // 선택된 배경색
   color: #ffffff; // 선택된 텍스트 색상
 }
+
 </style>
 <body>
 	<div id="preloader">
@@ -72,7 +73,7 @@
 							</div>
 							<!-- / column -->
 							<div class="input-group input-w-overlap-btn mb-0">
-								<input type="text" class="form-control pill" name="keyword"
+								<input type="text" class="form-control pill" name="searchkeyword"
 									placeholder="검색어를 입력하세요." value="${pager.searchCondition.keyword }"/><span class="input-group-btn">
 									<button id="search-button"
 										class="btn btn-sm btn-primary lh-0 overlapping-btn big-btn pill"
@@ -129,8 +130,10 @@
 										<!-- / row -->
 									</div>
 									<!-- / cta -->
-								</div> <!-- / promo-box -->
-						</a></li>
+								</div>
+								<!-- / promo-box -->
+							</a>
+						</li>
 					</c:forEach>
 					<!--====================================================================================================  -->
 				</ul>
